@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Stisla</a>
+            <a href="index.html">Sensus</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
@@ -16,6 +16,22 @@
                     </li>
                     <li class="{{ Request::is('dashboard-ecommerce-dashboard') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('dashboard-ecommerce-dashboard') }}">Ecommerce Dashboard</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-header">Master Data</li>
+            <li class="nav-item dropdown {{ $type_menu === 'master' ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Master Data</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('layout-default-layout') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('layout-default-layout') }}">Dusun</a>
+                    </li>
+                    <li class="{{ Request::is('transparent-sidebar') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('transparent-sidebar') }}">RT</a>
+                    </li>
+                    <li class="{{ Request::is('layout-top-navigation') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('layout-top-navigation') }}">RW</a>
                     </li>
                 </ul>
             </li>

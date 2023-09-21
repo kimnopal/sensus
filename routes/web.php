@@ -17,7 +17,7 @@ Route::redirect('/', '/dashboard-general-dashboard');
 
 // Individu
 Route::get('/individu', function () {
-    return view('pages.individu', ['type_menu' => '']);
+    return view('pages.individu.individu', ['type_menu' => '']);
 });
 
 
