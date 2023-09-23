@@ -24,14 +24,14 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Master Data</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('layout-default-layout') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('layout-default-layout') }}">Dusun</a>
+                    <li class="{{ Request::is('dusun*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('dusun') }}">Dusun</a>
                     </li>
-                    <li class="{{ Request::is('transparent-sidebar') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('transparent-sidebar') }}">RT</a>
+                    <li class="{{ Request::is('rt') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/rt') }}">RT</a>
                     </li>
-                    <li class="{{ Request::is('layout-top-navigation') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('layout-top-navigation') }}">RW</a>
+                    <li class="{{ Request::is('rw') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/rw') }}">RW</a>
                     </li>
                 </ul>
             </li>

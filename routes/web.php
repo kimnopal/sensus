@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DusunController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/dashboard-general-dashboard');
+
+// Master Data
+// Route::get('/dusun', [DusunController::class, "index"]);
+Route::resource("/dusun", DusunController::class)->except(["show"]);
+
+Route::get('/rt', function () {
+    return view('pages.master.rt', ['type_menu' => 'master']);
+});
+
+Route::get('/rw', function () {
+    return view('pages.master.rw', ['type_menu' => 'master']);
+});
 
 // Individu
 Route::get('/individu', function () {
