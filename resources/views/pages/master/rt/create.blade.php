@@ -1,13 +1,11 @@
 @extends('pages.master.layouts.create')
 
-@section('title', 'Blank Page')
-
 @section('form_field')
     <div class="form-group">
-        <label>Nama Dusun</label>
-        <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
-            value="{{ old('nama') }}">
-        @error('nama')
+        <label>Nomor RT</label>
+        <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="nomor"
+            value="{{ old('nomor') }}">
+        @error('nomor')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

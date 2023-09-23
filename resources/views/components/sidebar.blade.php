@@ -25,9 +25,9 @@
                     <span>Master Data</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('dusun*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('dusun') }}">Dusun</a>
+                        <a class="nav-link" href="{{ url('/dusun') }}">Dusun</a>
                     </li>
-                    <li class="{{ Request::is('rt') ? 'active' : '' }}">
+                    <li class="{{ Request::is('rt*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/rt') }}">RT</a>
                     </li>
                     <li class="{{ Request::is('rw') ? 'active' : '' }}">
