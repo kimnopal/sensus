@@ -64,7 +64,7 @@ class DusunController extends Controller
             'type_menu' => 'master',
             'title' => "Dusun",
             'path' => "/dusun",
-            'dusun' => $dusun,
+            'data' => $dusun,
         ]);
     }
 

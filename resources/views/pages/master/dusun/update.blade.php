@@ -4,7 +4,7 @@
     <div class="form-group">
         <label>Nama Dusun</label>
         <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
-            value="{{ old('nama') ?? $dusun->nama }}">
+            value="{{ old('nama') ?? $data->nama }}">
         @error('nama')
             <div class="invalid-feedback">
                 {{ $message }}

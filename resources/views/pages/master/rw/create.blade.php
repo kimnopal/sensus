@@ -1,10 +1,10 @@
-@extends('pages.master.layouts.update')
+@extends('pages.master.layouts.create')
 
 @section('form_field')
     <div class="form-group">
-        <label>Nomor RT</label>
+        <label>Nomor RW</label>
         <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="nomor"
-            value="{{ old('nama') ?? $data->nomor }}">
+            value="{{ old('nomor') }}">
         @error('nomor')
             <div class="invalid-feedback">
                 {{ $message }}

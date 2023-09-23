@@ -18,7 +18,7 @@
                     <div class="card-header">
                         <h4>Ubah {{ $title }}</h4>
                     </div>
-                    <form action="{{ $path }}/{{ $dusun->id }}" method="POST"
+                    <form action="{{ $path }}/{{ $data->id }}" method="POST"
                         class="card-body d-flex flex-column">
                         @csrf
                         @method('PUT')

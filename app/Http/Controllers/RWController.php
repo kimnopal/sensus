@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RT;
+use App\Models\RW;
 use Illuminate\Http\Request;
 
-class RTController extends Controller
+class RWController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +13,12 @@ class RTController extends Controller
     public function index(Request $request)
     {
         $search = $request->query("search");
-        return view('pages.master.rt.rt', [
-            'type_menu' => 'master',
-            "title" => "RT",
-            "path" => "/rt",
-            "datas" => RT::where("nomor", "LIKE", "%$search%")->paginate(10),
+
+        return view("pages.master.rw.rw", [
+            "type_menu" => "master",
+            "title" => "RW",
+            "path" => "/rw",
+            "datas" => RW::where("nomor", "LIKE", "%$search%")->paginate(10),
         ]);
     }
 
@@ -26,10 +27,10 @@ class RTController extends Controller
      */
     public function create()
     {
-        return view("pages.master.rt.create", [
+        return view("pages.master.rw.create", [
             'type_menu' => 'master',
-            "title" => "RT",
-            "path" => "/rt",
+            "title" => "RW",
+            "path" => "/rw",
         ]);
     }
 
@@ -42,9 +43,9 @@ class RTController extends Controller
             "nomor" => "required",
         ]);
 
-        RT::create($validatedData);
+        RW::create($validatedData);
 
-        return redirect("/rt")->with("success-create", "Berhasil menambahkan data RT");
+        return redirect("/rw")->with("success-create", "Berhasil menambahkan data RW");
     }
 
     /**
@@ -58,36 +59,36 @@ class RTController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(RT $rt)
+    public function edit(RW $rw)
     {
-        return view("pages.master.rt.update", [
+        return view("pages.master.rw.update", [
             'type_menu' => 'master',
-            "title" => "RT",
-            "path" => "/rt",
-            'data' => $rt,
+            "title" => "RW",
+            "path" => "/rw",
+            'data' => $rw,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, RT $rt)
+    public function update(Request $request, RW $rw)
     {
         $validatedData = $request->validate([
             "nomor" => "required"
         ]);
 
-        RT::where("id", $rt->id)->update($validatedData);
+        RW::where("id", $rw->id)->update($validatedData);
 
-        return redirect("/rt")->with("success-update", "Berhasil memperbarui data RT");
+        return redirect("/rw")->with("success-update", "Berhasil memperbarui data RW");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RT $rt)
+    public function destroy(RW $rw)
     {
-        $rt->destroy($rt->id);
-        return redirect("/rt")->with("success-delete", "Berhasil menghapus data RT");
+        $rw->destroy($rw->id);
+        return redirect("/rw")->with("success-delete", "Berhasil menghapus data RW");
     }
 }
