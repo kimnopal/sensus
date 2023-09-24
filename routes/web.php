@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DusunController;
+use App\Http\Controllers\IndividuController;
+use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
 use Illuminate\Support\Facades\Route;
@@ -24,10 +26,11 @@ Route::resource("/dusun", DusunController::class)->except(["show"]);
 Route::resource("/rt", RTController::class)->except(["show"]);
 Route::resource("/rw", RWController::class)->except(["show"]);
 
+// Keluarga
+Route::resource("/keluarga", KeluargaController::class);
+
 // Individu
-Route::get('/individu', function () {
-    return view('pages.individu.individu', ['type_menu' => '']);
-});
+Route::resource("/individu", IndividuController::class);
 
 
 // Dashboard

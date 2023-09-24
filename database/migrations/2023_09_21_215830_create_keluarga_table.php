@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string("kecamatan", 50);
             $table->string("desa", 100);
             $table->string("no_kk")->unique();
-            $table->unsignedBigInteger("dusun_id");
+            $table->unsignedBigInteger("dusun_id")->nullable();
             $table->foreign("dusun_id")->references("id")->on("dusun");
-            $table->unsignedBigInteger("rt_id");
+            $table->unsignedBigInteger("rt_id")->nullable();
             $table->foreign("rt_id")->references("id")->on("rt");
-            $table->unsignedBigInteger("rw_id");
+            $table->unsignedBigInteger("rw_id")->nullable();
             $table->foreign("rw_id")->references("id")->on("rw");
             $table->timestamps();
         });

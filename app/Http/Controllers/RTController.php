@@ -13,8 +13,8 @@ class RTController extends Controller
     public function index(Request $request)
     {
         $search = $request->query("search");
-        return view('pages.master.rt.rt', [
-            'type_menu' => 'master',
+        return view('pages.rt.index', [
+            'type_menu' => '',
             "title" => "RT",
             "path" => "/rt",
             "datas" => RT::where("nomor", "LIKE", "%$search%")->paginate(10),
@@ -26,8 +26,8 @@ class RTController extends Controller
      */
     public function create()
     {
-        return view("pages.master.rt.create", [
-            'type_menu' => 'master',
+        return view("pages.rt.create", [
+            'type_menu' => '',
             "title" => "RT",
             "path" => "/rt",
         ]);
@@ -60,8 +60,8 @@ class RTController extends Controller
      */
     public function edit(RT $rt)
     {
-        return view("pages.master.rt.update", [
-            'type_menu' => 'master',
+        return view("pages.rt.update", [
+            'type_menu' => '',
             "title" => "RT",
             "path" => "/rt",
             'data' => $rt,

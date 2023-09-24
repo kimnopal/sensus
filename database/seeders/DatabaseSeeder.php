@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Dusun;
+use App\Models\Individu;
 use App\Models\Keluarga;
-use App\Models\RT;
-use App\Models\RW;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,23 +23,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $listDusun = ["blater", "kalimanah", "babakan", "kejobong", "kali sogra"];
-        for ($i = 1; $i <= 5; $i++) {
-            RT::create([
-                'nomor' => $i
-            ]);
-
-            RW::create([
-                'nomor' => $i
-            ]);
-        }
-
-        foreach ($listDusun as $dusun) {
-            Dusun::create([
-                'nama' => $dusun
-            ]);
-        }
+        $this->call([
+            DataMasterSeeder::class
+        ]);
 
         Keluarga::factory(5)->create();
+        Individu::factory(10)->create();
     }
 }

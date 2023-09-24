@@ -27,15 +27,22 @@
                     <li class="{{ Request::is('dusun*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/dusun') }}">Dusun</a>
                     </li>
-                    <li class="{{ Request::is('rt*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/rt') }}">RT</a>
-                    </li>
                     <li class="{{ Request::is('rw') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/rw') }}">RW</a>
                     </li>
                 </ul>
             </li>
-            <li class="menu-header">Individu</li>
+            {{-- <li class="menu-header">RT</li> --}}
+            <li class="{{ Request::is('rt*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('rt') }}"><i class="far fa-square"></i>
+                    <span>RT</span></a>
+            </li>
+            {{-- <li class="menu-header">Keluarga</li> --}}
+            <li class="{{ Request::is('keluarga*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('keluarga') }}"><i class="far fa-square"></i>
+                    <span>Keluarga</span></a>
+            </li>
+            {{-- <li class="menu-header">Individu</li> --}}
             <li class="{{ Request::is('individu') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('individu') }}"><i class="far fa-square"></i>
                     <span>Individu</span></a>

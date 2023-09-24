@@ -14,7 +14,7 @@ class RWController extends Controller
     {
         $search = $request->query("search");
 
-        return view("pages.master.rw.rw", [
+        return view("pages.master.rw.index", [
             "type_menu" => "master",
             "title" => "RW",
             "path" => "/rw",

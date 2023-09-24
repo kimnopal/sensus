@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RT extends Model
 {
@@ -11,4 +12,9 @@ class RT extends Model
 
     protected $table = 'rt';
     protected $fillable = ['nomor'];
+
+    public function listKeluarga(): HasMany
+    {
+        return $this->hasMany(Keluarga::class);
+    }
 }
