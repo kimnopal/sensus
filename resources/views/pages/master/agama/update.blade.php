@@ -2,10 +2,10 @@
 
 @section('form_field')
     <div class="form-group">
-        <label>Nomor RW</label>
-        <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="nomor"
-            value="{{ old('nama') ?? $data->nomor }}">
-        @error('nomor')
+        <label>Agama</label>
+        <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
+            value="{{ old('nama') ?? $data->nama }}">
+        @error('nama')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

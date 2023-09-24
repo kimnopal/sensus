@@ -1,22 +1,22 @@
 @extends('pages.master.layouts.index')
 
 @section('table_column')
-    <th>Nomor RW</th>
+    <th>Agama</th>
 @endsection
 
 @section('table_data')
     @foreach ($datas as $index => $data)
         <tr>
             <td>{{ $index + 1 }}</td>
-            <td>{{ $data->nomor }}</td>
+            <td>{{ $data->nama }}</td>
             <td>
-                <a href="/rw/{{ $data->id }}/edit" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                <a href="/agama/{{ $data->id }}/edit" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                 <button class="btn btn-icon btn-danger modal-button">
                     <i class="fas fa-times"></i>
                 </button>
 
                 <div class="modal-body d-none">
-                    <form action="/rw/{{ $data->id }}" method="POST">
+                    <form action="/agama/{{ $data->id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <div class="form-group">

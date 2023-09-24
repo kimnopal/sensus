@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgamaController;
 use App\Http\Controllers\DusunController;
 use App\Http\Controllers\IndividuController;
 use App\Http\Controllers\KeluargaController;
@@ -25,6 +26,10 @@ Route::redirect('/', '/dashboard-general-dashboard');
 Route::resource("/dusun", DusunController::class)->except(["show"]);
 Route::resource("/rt", RTController::class)->except(["show"]);
 Route::resource("/rw", RWController::class)->except(["show"]);
+Route::resource("/agama", AgamaController::class)->except(["show"]);
+// Route::resource("/rw", RWController::class)->except(["show"]);
+// Route::resource("/rw", RWController::class)->except(["show"]);
+// Route::resource("/rw", RWController::class)->except(["show"]);
 
 // Keluarga
 Route::resource("/keluarga", KeluargaController::class);

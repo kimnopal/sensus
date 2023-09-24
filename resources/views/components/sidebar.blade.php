@@ -27,8 +27,20 @@
                     <li class="{{ Request::is('dusun*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/dusun') }}">Dusun</a>
                     </li>
-                    <li class="{{ Request::is('rw') ? 'active' : '' }}">
+                    <li class="{{ Request::is('rw*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/rw') }}">RW</a>
+                    </li>
+                    <li class="{{ Request::is('agama*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/agama') }}">Agama</a>
+                    </li>
+                    <li class="{{ Request::is('hubungan_keluarga*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/hubungan_keluarga') }}">Hubungan Keluarga</a>
+                    </li>
+                    <li class="{{ Request::is('akseptor_kb*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/akseptor_kb') }}">Akseptor KB</a>
+                    </li>
+                    <li class="{{ Request::is('suku*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/suku') }}">Suku</a>
                     </li>
                 </ul>
             </li>
