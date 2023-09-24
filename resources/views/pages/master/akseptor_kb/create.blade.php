@@ -2,10 +2,10 @@
 
 @section('form_field')
     <div class="form-group">
-        <label>Nomor RW</label>
-        <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="nomor"
-            value="{{ old('nomor') }}">
-        @error('nomor')
+        <label>Jenis Akseptor</label>
+        <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
+            value="{{ old('nama') }}">
+        @error('nama')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

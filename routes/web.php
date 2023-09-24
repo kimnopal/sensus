@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgamaController;
+use App\Http\Controllers\AkseptorKBController;
 use App\Http\Controllers\DusunController;
 use App\Http\Controllers\IndividuController;
 use App\Http\Controllers\KeluargaController;
@@ -27,7 +28,7 @@ Route::resource("/dusun", DusunController::class)->except(["show"]);
 Route::resource("/rt", RTController::class)->except(["show"]);
 Route::resource("/rw", RWController::class)->except(["show"]);
 Route::resource("/agama", AgamaController::class)->except(["show"]);
-// Route::resource("/rw", RWController::class)->except(["show"]);
+Route::resource("/akseptor_kb", AkseptorKBController::class)->except(["show"])->parameters(["akseptor_kb" => "akseptorKB"]);
 // Route::resource("/rw", RWController::class)->except(["show"]);
 // Route::resource("/rw", RWController::class)->except(["show"]);
 
