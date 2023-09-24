@@ -8,6 +8,7 @@ use App\Http\Controllers\IndividuController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
+use App\Http\Controllers\SukuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,7 @@ Route::resource("/rw", RWController::class)->except(["show"]);
 Route::resource("/agama", AgamaController::class)->except(["show"]);
 Route::resource("/akseptor_kb", AkseptorKBController::class)->except(["show"])->parameters(["akseptor_kb" => "akseptorKB"]);
 Route::resource("/hubungan_keluarga", HubunganKeluargaController::class)->except(["show"])->parameters(["hubungan_keluarga" => "hubunganKeluarga"]);
-// Route::resource("/rw", RWController::class)->except(["show"]);
+Route::resource("/suku", SukuController::class)->except(["show"]);
 
 // Keluarga
 Route::resource("/keluarga", KeluargaController::class);
