@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign("individu_id")->references("id")->on("individu");
             $table->enum("ktp_kia", ["ya", "tidak"]);
             $table->enum("akta_kelahiran", ["ya", "tidak"]);
-            $table->string("no_akta")->nullable();
+            $table->string("no_akta_kelahiran")->nullable();
             $table->timestamps();
         });
     }

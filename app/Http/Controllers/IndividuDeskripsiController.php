@@ -52,6 +52,9 @@ class IndividuDeskripsiController extends Controller
             "facebook" => "required|max:100",
             "twitter" => "required|max:50",
             "instagram" => "required|max:50",
+            "ktp_kia" => "required|in:ya,tidak",
+            "akta_kelahiran" => "required|in:ya,tidak",
+            "no_akta_kelahiran" => "nullable",
         ]);
 
         if ($request->checkbox_agama_lainnya) {
@@ -80,8 +83,6 @@ class IndividuDeskripsiController extends Controller
 
         $validatedData = collect($request->validate($rules));
 
-        // dd($validatedData->get("agama"));
-
         if (Keluarga::where("no_kk", $request->no_kk)->get()->isEmpty()) {
             Keluarga::create([
                 'provinsi' => 'jawa barat',
@@ -93,7 +94,7 @@ class IndividuDeskripsiController extends Controller
         }
 
         if ($request->checkbox_agama_lainnya) {
-            $agama = Agama::create(["nama" => $validatedData->agama_lainnya]);
+            $agama = Agama::create(["nama" => $validatedData->get("agama_lainnya")]);
 
             $validatedData->put("agama_id", $agama->id);
 
@@ -105,7 +106,7 @@ class IndividuDeskripsiController extends Controller
         }
 
         if ($request->checkbox_hubungan_keluarga_lainnya) {
-            $hubunganKeluarga = HubunganKeluarga::create(["nama" => $validatedData->hubungan_keluarga_lainnya]);
+            $hubunganKeluarga = HubunganKeluarga::create(["nama" => $validatedData->get("hubungan_keluarga_lainnya")]);
 
             $validatedData->put("hubungan_keluarga_id", $hubunganKeluarga->id);
 
@@ -117,7 +118,7 @@ class IndividuDeskripsiController extends Controller
         }
 
         if ($request->checkbox_akseptor_kb_lainnya) {
-            $akseptorKB = AkseptorKB::create(["nama" => $validatedData->akseptor_kb_lainnnya]);
+            $akseptorKB = AkseptorKB::create(["nama" => $validatedData->get("akseptor_kb_lainnya")]);
 
             $validatedData->put("akseptor_kb_id", $akseptorKB->id);
 
@@ -129,7 +130,7 @@ class IndividuDeskripsiController extends Controller
         }
 
         if ($request->checkbox_suku_lainnya) {
-            $suku = Suku::create(["nama" => $validatedData->suku_lainnya]);
+            $suku = Suku::create(["nama" => $validatedData->get("suku_lainnya")]);
 
             $validatedData->put("suku_id", $suku->id);
 
@@ -140,10 +141,9 @@ class IndividuDeskripsiController extends Controller
             $validatedData->forget("suku");
         }
 
-        $dataIndividu = $validatedData->except(["status_pernikahan", "status_surat_nikah", "no_surat_nikah"]);
+        $dataIndividu = $validatedData->except(["status_pernikahan", "status_surat_nikah", "no_surat_nikah", "ktp_kia", "akta_kelahiran", "no_akta"]);
         $dataPernikahan = $validatedData->only(["status_pernikahan", "status_surat_nikah", "no_surat_nikah"]);
-
-        // dd($dataPernikahan);
+        $dataKependudukan = $validatedData->only(["ktp_kia", "akta_kelahiran", "no_akta"]);
 
         $dataIndividu["step"] = "deskripsi";
 
@@ -153,10 +153,11 @@ class IndividuDeskripsiController extends Controller
         $dataPernikahan["status_pernikahan_id"] = $dataPernikahan->get("status_pernikahan");
         $dataPernikahan->forget("status_pernikahan");
 
-        // dd($dataPernikahan);
         DB::table("pernikahan")->insert($dataPernikahan->toArray());
 
+        $dataKependudukan["individu_id"] = $individu->id;
 
+        DB::table("administrasi_kependudukan")->insert($dataKependudukan->toArray());
 
         return to_route("individu.pekerjaan.create", ["id" => $individu->id]);
     }

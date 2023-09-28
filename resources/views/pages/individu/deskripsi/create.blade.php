@@ -128,7 +128,8 @@
     {{-- agama --}}
     <div class="form-group">
         <label>Agama</label>
-        <select class="form-control @error('agama') is-invalid @enderror" name="agama" id="selectAgama">
+        <select class="form-control @error('agama') is-invalid @enderror" name="agama" id="selectAgama"
+            @if (old('checkbox_agama_lainnya') == 'true') disabled="true" @endif>
             <option value="" selected>Pilih Agama</option>
             @foreach ($dataAgama as $agama)
                 <option value="{{ $agama->id }}" @selected(old('agama') == $agama->id)>{{ $agama->nama }}
@@ -149,7 +150,7 @@
             </div>
             <input type="text" id="inputAgamaLainnya"
                 class="form-control mt-1 @error('agama_lainnya') is-invalid @enderror" name="agama_lainnya"
-                value="{{ old('agama_lainnya') }}" disabled="true">
+                value="{{ old('agama_lainnya') }}" @if (old('checkbox_agama_lainnya') != 'true') disabled="true" @endif>
             @error('agama_lainnya')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -179,7 +180,7 @@
     <div class="form-group">
         <label>Hubungan Dengan Kepala Keluarga</label>
         <select class="form-control @error('hubungan_keluarga') is-invalid @enderror" name="hubungan_keluarga"
-            id="selectHubungan">
+            id="selectHubungan" @if (old('checkbox_hubungan_keluarga_lainnya') == 'true') disabled="true" @endif>
             <option value="" selected>Pilih Hubungan</option>
             @foreach ($dataHubunganKeluarga as $hubunganKeluarga)
                 <option value="{{ $hubunganKeluarga->id }}" @selected(old('hubungan_keluarga') == $hubunganKeluarga->id)>{{ $hubunganKeluarga->nama }}
@@ -200,7 +201,8 @@
             </div>
             <input type="text" id="inputHubunganLainnya"
                 class="form-control mt-1 @error('hubungan_keluarga_lainnya') is-invalid @enderror"
-                name="hubungan_keluarga_lainnya" value="{{ old('hubungan_keluarga_lainnya') }}" disabled="true">
+                name="hubungan_keluarga_lainnya" value="{{ old('hubungan_keluarga_lainnya') }}"
+                @if (old('checkbox_hubungan_keluarga_lainnya') != 'true') disabled="true" @endif>
             @error('hubungan_keluarga_lainnya')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -212,8 +214,8 @@
     {{-- akseptor kb --}}
     <div class="form-group">
         <label>Akseptor KB</label>
-        <select class="form-control @error('akseptor_kb') is-invalid @enderror" name="akseptor_kb"
-            id="selectAkseptorKB">
+        <select class="form-control @error('akseptor_kb') is-invalid @enderror" name="akseptor_kb" id="selectAkseptorKB"
+            @if (old('checkbox_akseptor_kb_lainnya') == 'true') disabled="true" @endif>
             <option value="" selected>Pilih Akseptor KB</option>
             @foreach ($dataAkseptorKB as $akseptorKB)
                 <option value="{{ $akseptorKB->id }}" @selected(old('akseptor_kb') == $akseptorKB->id)>{{ $akseptorKB->nama }}
@@ -229,12 +231,12 @@
         <div class="mt-2">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="checkboxAkseptorKBLainnya"
-                    name="checkbox_akseptor_kb_lainnya" value="true" @selected(old('checkbox_akseptor_kb_lainnya') == 'true')>
+                    name="checkbox_akseptor_kb_lainnya" value="true" @checked(old('checkbox_akseptor_kb_lainnya') == 'true')>
                 <label class="custom-control-label" for="checkboxAkseptorKBLainnya">Akseptor KB Lainnya</label>
             </div>
             <input type="text" id="inputAkseptorKBLainnya"
                 class="form-control mt-1 @error('akseptor_kb_lainnya') is-invalid @enderror" name="akseptor_kb_lainnya"
-                value="{{ old('akseptor_kb_lainnya') }}" disabled="true">
+                value="{{ old('akseptor_kb_lainnya') }}" @if (old('checkbox_akseptor_kb_lainnya') != 'true') disabled="true" @endif>
             @error('akseptor_kb_lainnya')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -246,7 +248,8 @@
     {{-- suku --}}
     <div class="form-group">
         <label>Suku</label>
-        <select class="form-control @error('suku') is-invalid @enderror" name="suku" id="selectSuku">
+        <select class="form-control @error('suku') is-invalid @enderror" name="suku" id="selectSuku"
+            @if (old('checkbox_suku_lainnya') == 'true') disabled="true" @endif>
             <option value="" selected>Pilih Suku</option>
             @foreach ($dataSuku as $suku)
                 <option value="{{ $suku->id }}" @selected(old('suku') == $suku->id)>{{ $suku->nama }}
@@ -262,12 +265,12 @@
         <div class="mt-2">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="checkboxSukuLainnya"
-                    name="checkbox_suku_lainnya" value="true" @selected(old('checkbox_suku_lainnya') == 'true')>
+                    name="checkbox_suku_lainnya" value="true" @checked(old('checkbox_suku_lainnya') == 'true')>
                 <label class="custom-control-label" for="checkboxSukuLainnya">Suku Lainnya</label>
             </div>
             <input type="text" id="inputSukuLainnya"
                 class="form-control mt-1 @error('suku_lainnya') is-invalid @enderror" name="suku_lainnya"
-                value="{{ old('suku_lainnya') }}" disabled="true">
+                value="{{ old('suku_lainnya') }}" @if (old('checkbox_suku_lainnya') != 'true') disabled="true" @endif>
             @error('suku_lainnya')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -369,6 +372,48 @@
         <input type="text" class="form-control @error('instagram') is-invalid @enderror" name="instagram"
             value="{{ old('instagram') }}">
         @error('instagram')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+    </div>
+
+    {{-- ktp/kia --}}
+    <div class="form-group">
+        <label>Status KTP/KIA</label>
+        <select class="form-control @error('ktp_kia') is-invalid @enderror" name="ktp_kia">
+            <option value="" selected>Pilih Status KTP/KIA</option>
+            <option value="ya" @selected(old('ktp_kia') == 'ya')>Ya</option>
+            <option value="tidak" @selected(old('ktp_kia') == 'tidak')>Tidak</option>
+        </select>
+        @error('ktp_kia')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+    </div>
+
+    {{-- akta kelahiran --}}
+    <div class="form-group">
+        <label>Akta Kelahiran</label>
+        <select class="form-control @error('akta_kelahiran') is-invalid @enderror" name="akta_kelahiran">
+            <option value="" selected>Pilih Akta Kelahiran</option>
+            <option value="ya" @selected(old('akta_kelahiran') == 'ya')>Ya</option>
+            <option value="tidak" @selected(old('akta_kelahiran') == 'tidak')>Tidak</option>
+        </select>
+        @error('akta_kelahiran')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+    </div>
+
+    {{-- no akta --}}
+    <div class="form-group">
+        <label>Nomor Akta Kelahiran</label>
+        <input type="text" class="form-control @error('no_akta_kelahiran') is-invalid @enderror"
+            name="no_akta_kelahiran" value="{{ old('no_akta_kelahiran') }}">
+        @error('no_akta_kelahiran')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
