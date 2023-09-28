@@ -5,12 +5,25 @@
 @endsection
 
 @section('form_field')
+    {{-- {{ dd($errors->all()) }} --}}
     {{-- nama --}}
     <div class="form-group">
         <label>Nama</label>
         <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
             value="{{ old('nama') }}">
         @error('nama')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+    </div>
+
+    {{-- nik --}}
+    <div class="form-group">
+        <label>NIK</label>
+        <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"
+            value="{{ old('nik') }}">
+        @error('nik')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
@@ -131,7 +144,7 @@
         <div class="mt-2">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="checkboxAgamaLainnya" name="checkbox_agama_lainnya"
-                    value="true" @selected(old('checkbox_agama_lainnya') == 'true')>
+                    value="true" @checked(old('checkbox_agama_lainnya') == 'true')>
                 <label class="custom-control-label" for="checkboxAgamaLainnya">Agama Lainnya</label>
             </div>
             <input type="text" id="inputAgamaLainnya"
@@ -182,7 +195,7 @@
         <div class="mt-2">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="checkboxHubunganLainnya"
-                    name="checkbox_hubungan_lainnya" value="true" @checked(old('checkbox_hubungan_lainnya') == 'true')>
+                    name="checkbox_hubungan_keluarga_lainnya" value="true" @checked(old('checkbox_hubungan_keluarga_lainnya') == 'true')>
                 <label class="custom-control-label" for="checkboxHubunganLainnya">Hubungan Keluarga Lainnya</label>
             </div>
             <input type="text" id="inputHubunganLainnya"
