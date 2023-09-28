@@ -22,7 +22,7 @@
                     <form action="{{ $path }}" method="POST" class="card-body d-flex flex-column">
                         @csrf
                         @yield('form_field')
-                        <button href="{{ $path }}/create" class="btn btn-primary align-self-end">Tambah
+                        <button class="btn btn-primary align-self-end">Tambah
                             Data</button>
                     </form>
                 </div>

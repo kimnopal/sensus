@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agama;
+use App\Models\AkseptorKB;
+use App\Models\Dusun;
+use App\Models\HubunganKeluarga;
 use App\Models\Individu;
+use App\Models\RT;
+use App\Models\RW;
+use App\Models\Suku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class IndividuController extends Controller
 {
@@ -14,59 +22,11 @@ class IndividuController extends Controller
     {
         $search = $request->query("search");
 
-        return view("pages.individu.individu", [
+        return view("pages.individu.index", [
             "type_menu" => "",
             "title" => "Individu",
-            "path" => "/individu",
+            "path" => "/individu/create/deskripsi",
             "datas" => Individu::where("nik", "LIKE", "%$search%")->paginate(10),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

@@ -23,7 +23,7 @@
                         @csrf
                         @method('PUT')
                         @yield('form_field')
-                        <button href="{{ $path }}/create" class="btn btn-primary align-self-end">Ubah Data</button>
+                        <button class="btn btn-primary align-self-end">Ubah Data</button>
                     </form>
                 </div>
             </div>

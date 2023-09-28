@@ -15,10 +15,12 @@
 
             <div class="section-body">
                 <div class="row">
-                    <div class="col-12">
-                        <a href="{{ $path }}/create" class="btn btn-primary mr-auto">Tambah Data
+                    <div class="col d-flex justify-content-end">
+                        <a href="{{ $path }}" class="btn btn-primary mb-3 align-self-end">+ Tambah Data
                             {{ $title }}</a>
+                    </div>
 
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4>Data {{ $title }}</h4>

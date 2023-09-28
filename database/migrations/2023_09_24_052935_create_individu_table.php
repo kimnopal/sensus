@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string("facebook", 100);
             $table->string("twitter", 100);
             $table->string("instagram", 100);
+            $table->enum("step", ["deskripsi", "pekerjaan", "kesehatan", "pendidikan"]);
             $table->timestamps();
         });
     }

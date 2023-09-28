@@ -55,7 +55,7 @@
                     <span>Keluarga</span></a>
             </li>
             {{-- <li class="menu-header">Individu</li> --}}
-            <li class="{{ Request::is('individu') ? 'active' : '' }}">
+            <li class="{{ Request::is('individu*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('individu') }}"><i class="far fa-square"></i>
                     <span>Individu</span></a>
             </li>
