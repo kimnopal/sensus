@@ -42,6 +42,15 @@
                     <li class="{{ Request::is('suku*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/suku') }}">Suku</a>
                     </li>
+                    <li class="{{ Request::is('pekerjaan_utama*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/pekerjaan_utama') }}">Pekerjaan Utama</a>
+                    </li>
+                    <li class="{{ Request::is('satuan*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/satuan') }}">Satuan</a>
+                    </li>
+                    <li class="{{ Request::is('sumber_penghasilan*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/sumber_penghasilan') }}">Sumber Penghasilan</a>
+                    </li>
                 </ul>
             </li>
             {{-- <li class="menu-header">RT</li> --}}

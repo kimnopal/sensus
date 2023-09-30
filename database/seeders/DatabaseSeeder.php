@@ -4,8 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Individu;
 use App\Models\Keluarga;
+use App\Models\PekerjaanIndividu;
+use App\Models\SumberPenghasilan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,5 +32,21 @@ class DatabaseSeeder extends Seeder
 
         Keluarga::factory(5)->create();
         Individu::factory(10)->create();
+        PekerjaanIndividu::factory(10)->create();
+
+        $pekerjaanIndividu = PekerjaanIndividu::all();
+        $sumberPenghasilan = SumberPenghasilan::all();
+
+        $pekerjaanIndividu->each(function (PekerjaanIndividu $pekerjaan) use ($sumberPenghasilan) {
+            $sumberPenghasilan->random(rand(1, 42))->each(function (SumberPenghasilan $penghasilan) use ($pekerjaan) {
+                DB::table("penghasilan")->insert([
+                    "pekerjaan_individu_id" => $pekerjaan->id,
+                    "sumber_penghasilan_id" => $penghasilan->id,
+                    "jumlah" => fake()->numerify("###"),
+                    "penghasilan" => fake()->numerify("#######"),
+                    "ekspor" => ["semua", "sebagian besar", "tidak"][array_rand(["semua", "sebagian besar", "tidak"])],
+                ]);
+            });
+        });
     }
 }

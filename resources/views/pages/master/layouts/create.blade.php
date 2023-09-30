@@ -47,4 +47,6 @@
             });
         </script>
     @enderror
+
+    @stack('scripts')
 @endpush

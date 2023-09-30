@@ -17,7 +17,7 @@ class DusunController extends Controller
             'type_menu' => 'master',
             'title' => "Dusun",
             'path' => "/dusun",
-            "datas" => Dusun::where("nama", "LIKE", "%$search%")->paginate(5),
+            "datas" => Dusun::where("nama", "LIKE", "%$search%")->paginate(10),
         ]);
     }
 

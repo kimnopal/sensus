@@ -10,9 +10,12 @@ use App\Http\Controllers\IndividuKesehatanController;
 use App\Http\Controllers\IndividuPekerjaanController;
 use App\Http\Controllers\IndividuPendidikanController;
 use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\PekerjaanUtamaController;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
+use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\SukuController;
+use App\Http\Controllers\SumberPenghasilanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +40,9 @@ Route::resource("/agama", AgamaController::class)->except(["show"]);
 Route::resource("/akseptor_kb", AkseptorKBController::class)->except(["show"])->parameters(["akseptor_kb" => "akseptorKB"]);
 Route::resource("/hubungan_keluarga", HubunganKeluargaController::class)->except(["show"])->parameters(["hubungan_keluarga" => "hubunganKeluarga"]);
 Route::resource("/suku", SukuController::class)->except(["show"]);
+Route::resource("/pekerjaan_utama", PekerjaanUtamaController::class)->except(["show"]);
+Route::resource("/satuan", SatuanController::class)->except(["show"]);
+Route::resource("/sumber_penghasilan", SumberPenghasilanController::class)->except(["show"]);
 
 // Keluarga
 Route::resource("/keluarga", KeluargaController::class);

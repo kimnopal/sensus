@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('sumber_penghasilan', function (Blueprint $table) {
             $table->id();
             $table->string("nama");
+            $table->unsignedBigInteger("satuan_id");
+            $table->foreign("satuan_id")->references("id")->on("satuan");
             $table->timestamps();
         });
     }

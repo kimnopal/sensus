@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign("individu_id")->references("id")->on("individu");
             $table->unsignedBigInteger("kondisi_pekerjaan_id");
             $table->foreign("kondisi_pekerjaan_id")->references("id")->on("kondisi_pekerjaan");
+            $table->unsignedBigInteger("pekerjaan_utama_id");
+            $table->foreign("pekerjaan_utama_id")->references("id")->on("pekerjaan_utama");
             $table->enum("status_jamsostek", ["peserta", "bukan peserta"]);
             $table->string("no_jamsostek", 100)->nullable();
             $table->unsignedBigInteger("gaji");
