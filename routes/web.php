@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AgamaController;
 use App\Http\Controllers\AkseptorKBController;
+use App\Http\Controllers\DisabilitasController;
 use App\Http\Controllers\DusunController;
+use App\Http\Controllers\FaskesController;
 use App\Http\Controllers\HubunganKeluargaController;
 use App\Http\Controllers\IndividuController;
 use App\Http\Controllers\IndividuKesehatanController;
@@ -44,6 +46,8 @@ Route::resource("/pekerjaan_utama", PekerjaanUtamaController::class)->except(["s
 Route::resource("/satuan", SatuanController::class)->except(["show"]);
 Route::resource("/sumber_penghasilan", SumberPenghasilanController::class)->except(["show"]);
 Route::resource("/penyakit", PenyakitController::class)->except(["show"]);
+Route::resource("/faskes", FaskesController::class)->except(["show"])->parameters(["faskes" => "faskes"]);
+Route::resource("/disabilitas", DisabilitasController::class)->except(["show"]);
 
 // Keluarga
 Route::resource("/keluarga", KeluargaController::class);

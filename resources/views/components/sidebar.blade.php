@@ -54,6 +54,9 @@
                     <li class="{{ Request::is('penyakit*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/penyakit') }}">Penyakit</a>
                     </li>
+                    <li class="{{ Request::is('faskes*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/faskes') }}">Fasilitas Kesehatan</a>
+                    </li>
                 </ul>
             </li>
             {{-- <li class="menu-header">RT</li> --}}

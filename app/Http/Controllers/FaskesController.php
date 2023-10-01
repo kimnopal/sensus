@@ -10,9 +10,15 @@ class FaskesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->query("search");
+        return view("pages.master.faskes.index", [
+            "type_menu" => "master",
+            "title" => "Fasilitas Kesehatan",
+            "path" => "/faskes",
+            "datas" => Faskes::where("nama", "LIKE", "%$search%")->paginate(10),
+        ]);
     }
 
     /**
@@ -20,7 +26,11 @@ class FaskesController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.master.faskes.create", [
+            "type_menu" => "master",
+            "title" => "Fasilitas Kesehatan",
+            "path" => "/faskes",
+        ]);
     }
 
     /**
@@ -28,7 +38,13 @@ class FaskesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            "nama" => "required",
+        ]);
+
+        Faskes::create($validatedData);
+
+        return redirect("/faskes")->with("success-create", "Berhasil menambahkan data Fasilitas Kesehatan");
     }
 
     /**
@@ -44,7 +60,12 @@ class FaskesController extends Controller
      */
     public function edit(Faskes $faskes)
     {
-        //
+        return view("pages.master.faskes.update", [
+            "type_menu" => "master",
+            "title" => "Fasilitas Kesehatan",
+            "path" => "/faskes",
+            "data" => $faskes,
+        ]);
     }
 
     /**
@@ -52,7 +73,13 @@ class FaskesController extends Controller
      */
     public function update(Request $request, Faskes $faskes)
     {
-        //
+        $validatedData = $request->validate([
+            "nama" => "required"
+        ]);
+
+        Faskes::where("id", $faskes->id)->update($validatedData);
+
+        return redirect("/faskes")->with("success-update", "Berhasil memperbarui data Fasilitas Kesehatan");
     }
 
     /**
@@ -60,6 +87,7 @@ class FaskesController extends Controller
      */
     public function destroy(Faskes $faskes)
     {
-        //
+        $faskes->destroy($faskes->id);
+        return redirect("/faskes")->with("success-delete", "Berhasil menghapus data Fasilitas Kesehatan");
     }
 }
