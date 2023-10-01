@@ -38,16 +38,16 @@ class DatabaseSeeder extends Seeder
         $pekerjaanIndividu = PekerjaanIndividu::all();
         $sumberPenghasilan = SumberPenghasilan::all();
 
-        // $pekerjaanIndividu->each(function (PekerjaanIndividu $pekerjaan) use ($sumberPenghasilan) {
-        //     $sumberPenghasilan->random(rand(1, 42))->each(function (SumberPenghasilan $penghasilan) use ($pekerjaan) {
-        //         Penghasilan::create([
-        //             "pekerjaan_individu_id" => $pekerjaan->id,
-        //             "sumber_penghasilan_id" => $penghasilan->id,
-        //             "jumlah" => fake()->numerify("###"),
-        //             "penghasilan" => fake()->numerify("#######"),
-        //             "ekspor" => ["semua", "sebagian besar", "tidak"][array_rand(["semua", "sebagian besar", "tidak"])],
-        //         ]);
-        //     });
-        // });
+        $pekerjaanIndividu->each(function (PekerjaanIndividu $pekerjaan) use ($sumberPenghasilan) {
+            $sumberPenghasilan->random(rand(1, 42))->each(function (SumberPenghasilan $penghasilan) use ($pekerjaan) {
+                Penghasilan::create([
+                    "pekerjaan_individu_id" => $pekerjaan->id,
+                    "sumber_penghasilan_id" => $penghasilan->id,
+                    "jumlah" => fake()->numerify("###"),
+                    "penghasilan" => fake()->numerify("#######"),
+                    "ekspor" => ["semua", "sebagian besar", "tidak"][array_rand(["semua", "sebagian besar", "tidak"])],
+                ]);
+            });
+        });
     }
 }

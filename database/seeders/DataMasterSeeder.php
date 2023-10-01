@@ -4,9 +4,12 @@ namespace Database\Seeders;
 
 use App\Models\Agama;
 use App\Models\AkseptorKB;
+use App\Models\Disabilitas;
 use App\Models\Dusun;
+use App\Models\Faskes;
 use App\Models\HubunganKeluarga;
 use App\Models\PekerjaanUtama;
+use App\Models\Penyakit;
 use App\Models\RT;
 use App\Models\RW;
 use App\Models\Satuan;
@@ -155,6 +158,77 @@ class DataMasterSeeder extends Seeder
             SumberPenghasilan::create([
                 "nama" => $sumberPenghasilan,
                 "satuan_id" => $satuan,
+            ]);
+        }
+
+        // penyakit
+        $listPenyakit = [
+            "Muntaber/diare",
+            "Demam berdarah",
+            "Campak",
+            "Malaria",
+            "Flu burung/SARS",
+            "Covid-19",
+            "Hepatitis B",
+            "Hepatitis E",
+            "Difteri",
+            "Chikungunya",
+            "Leptospirosis",
+            "Kolera",
+            "Gizi buruk (marasmus dan kwasiorkor)",
+            "Jantung",
+            "TBC paru-paru",
+            "Kanker",
+            "Diabetes/kencing manis/gula",
+            "Lumpuh"
+        ];
+        foreach ($listPenyakit as $penyakit) {
+            Penyakit::create([
+                "nama" => $penyakit,
+            ]);
+        }
+
+        // faskes
+        $listFaskes = [
+            "Rumah sakit",
+            "Rumah sakit bersalin",
+            "Puskesmas dengan rawat inap",
+            "Puskesmas tanpa rawat inap",
+            "Puskesmas pembantu",
+            "Poliklinik/balai pengobatan",
+            "Tempat praktik dokter",
+            "Rumah bersalin",
+            "Tempat praktik bidan",
+            "Poskesdes",
+            "Polindes",
+            "Apotik",
+            "Toko khusus obat/jamu",
+            "Posyandu",
+            "Posbindu",
+            "Tempat praktik dukun bayi/bersalin/paraji",
+        ];
+        foreach ($listFaskes as $faskes) {
+            Faskes::create([
+                "nama" => $faskes,
+            ]);
+        }
+
+        // disabilitas
+        $listDisabilitas = [
+            "Tunanetra (buta)",
+            "Tunarungu (tuli)",
+            "Tunawicara (bisu)",
+            "Tunarungu-wicara (tulis-bisu)",
+            "Tunadaksa (cacat tubuh): kelumpuhan/kelainan/ketidaklengkapan anggota gerak",
+            "Tunagrahita (cacat mental, keterbelakangan mental)",
+            "Tunalaras (eks-sakit jiwa, gangguan mengendalikan emosi dan kontrol sosial)",
+            "Cacat eks-sakit kusta: pernah sakit kusta dan dinyatakan sembuh oleh dokter",
+            "Cacat ganda (cacat fisik-mental): cacat fisik dan cacat mental",
+            "Dipasung",
+        ];
+        foreach ($listDisabilitas as $disabilitas) {
+            Disabilitas::create([
+                "nama" => $disabilitas,
             ]);
         }
     }
