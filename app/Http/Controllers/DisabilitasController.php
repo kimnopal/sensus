@@ -63,7 +63,7 @@ class DisabilitasController extends Controller
         return view("pages.master.disabilitas.update", [
             "type_menu" => "master",
             "title" => "Disabilitas",
-            "path" => "/Disabilitas",
+            "path" => "/disabilitas",
             "data" => $disabilitas,
         ]);
     }

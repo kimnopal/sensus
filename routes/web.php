@@ -47,7 +47,7 @@ Route::resource("/satuan", SatuanController::class)->except(["show"]);
 Route::resource("/sumber_penghasilan", SumberPenghasilanController::class)->except(["show"]);
 Route::resource("/penyakit", PenyakitController::class)->except(["show"]);
 Route::resource("/faskes", FaskesController::class)->except(["show"])->parameters(["faskes" => "faskes"]);
-Route::resource("/disabilitas", DisabilitasController::class)->except(["show"]);
+Route::resource("/disabilitas", DisabilitasController::class)->except(["show"])->parameters(["disabilitas" => "disabilitas"]);
 
 // Keluarga
 Route::resource("/keluarga", KeluargaController::class);
