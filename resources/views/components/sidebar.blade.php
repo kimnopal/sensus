@@ -51,6 +51,9 @@
                     <li class="{{ Request::is('sumber_penghasilan*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/sumber_penghasilan') }}">Sumber Penghasilan</a>
                     </li>
+                    <li class="{{ Request::is('penyakit*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/penyakit') }}">Penyakit</a>
+                    </li>
                 </ul>
             </li>
             {{-- <li class="menu-header">RT</li> --}}

@@ -10,6 +10,7 @@ use App\Http\Controllers\IndividuPekerjaanController;
 use App\Http\Controllers\IndividuPendidikanController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\PekerjaanUtamaController;
+use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
 use App\Http\Controllers\SatuanController;
@@ -42,6 +43,7 @@ Route::resource("/suku", SukuController::class)->except(["show"]);
 Route::resource("/pekerjaan_utama", PekerjaanUtamaController::class)->except(["show"]);
 Route::resource("/satuan", SatuanController::class)->except(["show"]);
 Route::resource("/sumber_penghasilan", SumberPenghasilanController::class)->except(["show"]);
+Route::resource("/penyakit", PenyakitController::class)->except(["show"]);
 
 // Keluarga
 Route::resource("/keluarga", KeluargaController::class);
