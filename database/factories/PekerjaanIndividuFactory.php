@@ -19,16 +19,16 @@ class PekerjaanIndividuFactory extends Factory
      */
     public function definition(): array
     {
-        $individu = Individu::all(["id"]);
         $kondisiPekerjaan = DB::table("kondisi_pekerjaan")->get();
         $pekerjaanUtama = PekerjaanUtama::all();
 
+        $statusJamsostek = ["peserta", "bukan peserta"][array_rand(["peserta", "bukan peserta"])];
+
         return [
-            "individu_id" => $individu->random(1)->first()->id,
             "kondisi_pekerjaan_id" => $kondisiPekerjaan->random(1)->first()->id,
             "pekerjaan_utama_id" => $pekerjaanUtama->random(1)->first()->id,
-            "status_jamsostek" => ["peserta", "bukan peserta"][array_rand(["peserta", "bukan peserta"])],
-            "no_jamsostek" => fake()->numerify('##########'),
+            "status_jamsostek" => $statusJamsostek,
+            "no_jamsostek" => $statusJamsostek == "peserta" ? fake()->numerify('##########') : "",
             "gaji" => fake()->numerify('#######')
         ];
     }

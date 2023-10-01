@@ -47,7 +47,7 @@
         <label>Jenis Kelamin</label>
         <select class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin">
             <option value="" selected>Pilih Jenis Kelamin</option>
-            <option value="laki-laki" @selected(old('jenis_kelamin') == 'laki-laki')>laki - Laki</option>
+            <option value="laki-laki" @selected(old('jenis_kelamin') == 'laki-laki')>Laki - Laki</option>
             <option value="perempuan" @selected(old('jenis_kelamin') == 'perempuan')>Perempuan</option>
         </select>
         @error('jenis_kelamin')

@@ -5,7 +5,6 @@ use App\Http\Controllers\AkseptorKBController;
 use App\Http\Controllers\DusunController;
 use App\Http\Controllers\HubunganKeluargaController;
 use App\Http\Controllers\IndividuController;
-use App\Http\Controllers\IndividuDeskripsiController;
 use App\Http\Controllers\IndividuKesehatanController;
 use App\Http\Controllers\IndividuPekerjaanController;
 use App\Http\Controllers\IndividuPendidikanController;
@@ -50,19 +49,19 @@ Route::resource("/keluarga", KeluargaController::class);
 // Individu
 Route::get("/individu", [IndividuController::class, "index"]);
 
-Route::get("/individu/create/deskripsi", [IndividuDeskripsiController::class, "create"])->name("individu.deskripsi.create");
-Route::post("/individu/deskripsi", [IndividuDeskripsiController::class, "store"])->name("individu.deskripsi.store");
+Route::get("/individu/create/deskripsi", [IndividuController::class, "create"])->name("individu.deskripsi.create");
+Route::post("/individu/deskripsi", [IndividuController::class, "store"])->name("individu.deskripsi.store");
 // Route::get("/individu/{id}/edit/deskripsi", [IndividuDeskripsiController::class, "edit"]);
 // Route::put("/individu/{id}", [IndividuDeskripsiController::class, "edit"]);
 
-Route::get("/individu/create/{id}/pekerjaan", [IndividuPekerjaanController::class, "create"])->name("individu.pekerjaan.create");
-Route::post("/individu/{id}/pekerjaan", [IndividuPekerjaanController::class, "store"])->name("individu.pekerjaan.store");
+Route::get("/individu/create/{individu}/pekerjaan", [IndividuPekerjaanController::class, "create"])->name("individu.pekerjaan.create");
+Route::post("/individu/{individu}/pekerjaan", [IndividuPekerjaanController::class, "store"])->name("individu.pekerjaan.store");
 
-Route::get("/individu/create/{id}/kesehatan", [IndividuKesehatanController::class, "create"])->name("individu.kesehatan.create");
-Route::post("/individu/{id}/kesehatan", [IndividuKesehatanController::class, "store"])->name("individu.kesehatan.store");
+Route::get("/individu/create/{individu}/kesehatan", [IndividuKesehatanController::class, "create"])->name("individu.kesehatan.create");
+Route::post("/individu/{individu}/kesehatan", [IndividuKesehatanController::class, "store"])->name("individu.kesehatan.store");
 
-Route::get("/individu/create/{id}/pendidikan", [IndividuPendidikanController::class, "create"])->name("individu.pendidikan.create");
-Route::post("/individu/{id}/pendidikan", [IndividuPendidikanController::class, "store"])->name("individu.pendidikan.store");
+Route::get("/individu/create/{individu}/pendidikan", [IndividuPendidikanController::class, "create"])->name("individu.pendidikan.create");
+Route::post("/individu/{individu}/pendidikan", [IndividuPendidikanController::class, "store"])->name("individu.pendidikan.store");
 
 
 // Dashboard

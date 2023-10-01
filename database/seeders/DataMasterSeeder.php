@@ -43,7 +43,7 @@ class DataMasterSeeder extends Seeder
         }
 
         // agama
-        $listAgama = ["islam", "kristen", "katholik", "hindu", "budha", "khonghucu"];
+        $listAgama = ["Islam", "Kristen", "Katholik", "Hindu", "Budha", "Khonghucu"];
         foreach ($listAgama as $agama) {
             Agama::create([
                 'nama' => $agama
@@ -51,7 +51,7 @@ class DataMasterSeeder extends Seeder
         }
 
         // hubungan keluarga
-        $listHubungan = ["kepala keluarga", "istri", "suami", "anak", "cucu", "mertua", "menantu", "keponakan"];
+        $listHubungan = ["Kepala Keluarga", "Istri", "Suami", "Anak", "Cucu", "Mertua", "Menantu", "Keponakan"];
         foreach ($listHubungan as $hubungan) {
             HubunganKeluarga::create([
                 'nama' => $hubungan
@@ -59,7 +59,7 @@ class DataMasterSeeder extends Seeder
         }
 
         // akseptor kb
-        $listAkseptor = ["pil", "spiral", "suntik", "susuk", "kondom", "vasektomi", "tubektomi", "tidak kb"];
+        $listAkseptor = ["Pil", "Spiral", "Suntik", "Susuk", "Kondom", "Vasektomi", "Tubektomi", "Tidak KB"];
         foreach ($listAkseptor as $akseptor) {
             AkseptorKB::create([
                 'nama' => $akseptor
@@ -67,7 +67,7 @@ class DataMasterSeeder extends Seeder
         }
 
         // suku
-        $listSuku = ["jawa", "sunda"];
+        $listSuku = ["Jawa", "Sunda"];
         foreach ($listSuku as $suku) {
             Suku::create([
                 'nama' => $suku
@@ -75,7 +75,7 @@ class DataMasterSeeder extends Seeder
         }
 
         // status pernikahan
-        $listStatusPernikahan = ["kawin", "tidak kawin", "cerai hidup", "cerai mati"];
+        $listStatusPernikahan = ["Kawin", "Tidak Kawin", "Cerai Hidup", "Cerai Mati"];
         foreach ($listStatusPernikahan as $statusPernikahan) {
             DB::table("status_pernikahan")->insert([
                 'status' => $statusPernikahan
@@ -83,7 +83,7 @@ class DataMasterSeeder extends Seeder
         }
 
         // kondisi pekerjaan
-        $listKondisiPekerjaan = ["bersekolah", "ibu rumah tanggga", "tidak bekerja", "sedang mencari pekerjaan", "bekerja"];
+        $listKondisiPekerjaan = ["Bersekolah", "Ibu Rumah Tanggga", "Tidak bekerja", "Sedang mencari pekerjaan", "Bekerja"];
         foreach ($listKondisiPekerjaan as $kondisiPekerjaan) {
             DB::table("kondisi_pekerjaan")->insert([
                 "nama" => $kondisiPekerjaan

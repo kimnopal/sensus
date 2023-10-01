@@ -106,7 +106,7 @@
                     <div class="card-header">
                         <h4>Tambah {{ $title }}</h4>
                     </div>
-                    <form action="/individu{{ $path }}" method="POST" class="card-body d-flex flex-column">
+                    <form action="{{ $path }}" method="POST" class="card-body d-flex flex-column">
                         @csrf
                         @yield('form_field')
                         <button type="submit" class="btn btn-primary align-self-end">Selanjutnya</button>
