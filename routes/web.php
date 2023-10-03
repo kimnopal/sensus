@@ -64,12 +64,18 @@ Route::put("/individu/{individu}/deskripsi", [IndividuController::class, "update
 
 Route::get("/individu/create/{individu}/pekerjaan", [IndividuPekerjaanController::class, "create"])->name("individu.pekerjaan.create");
 Route::post("/individu/{individu}/pekerjaan", [IndividuPekerjaanController::class, "store"])->name("individu.pekerjaan.store");
+Route::get("/individu/{individu}/edit/pekerjaan", [IndividuPekerjaanController::class, "edit"])->name("individu.pekerjaan.edit");
+Route::put("/individu/{individu}/pekerjaan", [IndividuPekerjaanController::class, "update"])->name("individu.pekerjaan.update");
 
 Route::get("/individu/create/{individu}/kesehatan", [IndividuKesehatanController::class, "create"])->name("individu.kesehatan.create");
 Route::post("/individu/{individu}/kesehatan", [IndividuKesehatanController::class, "store"])->name("individu.kesehatan.store");
+Route::get("/individu/{individu}/edit/kesehatan", [IndividuKesehatanController::class, "edit"])->name("individu.kesehatan.edit");
+Route::put("/individu/{individu}/kesehatan", [IndividuKesehatanController::class, "update"])->name("individu.kesehatan.update");
 
 Route::get("/individu/create/{individu}/pendidikan", [IndividuPendidikanController::class, "create"])->name("individu.pendidikan.create");
 Route::post("/individu/{individu}/pendidikan", [IndividuPendidikanController::class, "store"])->name("individu.pendidikan.store");
+Route::get("/individu/{individu}/edit/pendidikan", [IndividuPendidikanController::class, "edit"])->name("individu.pendidikan.edit");
+Route::put("/individu/{individu}/pendidikan", [IndividuPendidikanController::class, "update"])->name("individu.pendidikan.update");
 
 
 // Dashboard

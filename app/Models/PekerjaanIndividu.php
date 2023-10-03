@@ -25,7 +25,7 @@ class PekerjaanIndividu extends Model
         return $this->belongsTo(PekerjaanUtama::class);
     }
 
-    public function listPenghasilan(): HasMany
+    public function list_penghasilan(): HasMany
     {
         return $this->hasMany(Penghasilan::class);
     }

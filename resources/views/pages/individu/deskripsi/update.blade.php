@@ -3,7 +3,7 @@
 @section('timeline')
     @include('pages.layouts.timeline', ['operation' => 'edit'])
 @endsection
-{{-- @dd($errors->all()) --}}
+
 @section('form_field')
     {{-- nama --}}
     <div class="form-group">

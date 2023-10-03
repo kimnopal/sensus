@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger("sumber_penghasilan_id");
             $table->foreign("sumber_penghasilan_id")->references("id")->on("sumber_penghasilan");
             $table->unsignedInteger("jumlah")->nullable();
-            $table->unsignedInteger("penghasilan")->nullable();
+            $table->unsignedBigIntegerInteger("penghasilan")->nullable();
             $table->enum("ekspor", ["semua", "sebagian besar", "tidak"])->nullable();
             $table->timestamps();
         });

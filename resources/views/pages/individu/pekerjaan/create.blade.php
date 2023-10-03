@@ -172,7 +172,6 @@
                 </div>
             @endforeach
 
-            {{-- @dd($errors->get('sumber_penghasilan.*')) --}}
         </div>
     </div>
 @endsection

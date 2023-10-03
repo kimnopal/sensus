@@ -322,7 +322,6 @@ class IndividuController extends Controller
 
         AdministrasiKependudukan::where("individu_id", $individuId)->update($dataKependudukan->toArray());
 
-        return redirect("/individu");
-        // return to_route("individu.pekerjaan.update", ["individu" => $individu->id]);
+        return to_route("individu.pekerjaan.edit", ["individu" => $individu->id]);
     }
 }
