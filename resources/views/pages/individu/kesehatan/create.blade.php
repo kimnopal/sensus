@@ -127,7 +127,8 @@
                         {{-- status disabilitas --}}
                         <div class="form-group">
                             <label>Status Disabilitas</label>
-                            <select class="form-control @error('status_disabilitas.' . $penyakit->id) is-invalid @enderror"
+                            <select
+                                class="form-control @error('status_disabilitas.' . $disabilitas->id) is-invalid @enderror"
                                 name="status_disabilitas[{{ $disabilitas->id }}]">
                                 <option value="ya" @selected(old('status_disabilitas.' . $disabilitas->id) == 'ya')>Ya</option>
                                 <option value="tidak" @selected(old('status_disabilitas.' . $disabilitas->id) != 'ya')>Tidak</option>

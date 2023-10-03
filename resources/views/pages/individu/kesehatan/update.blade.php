@@ -3,7 +3,7 @@
 @section('timeline')
     @include('pages.layouts.timeline', ['operation' => 'edit'])
 @endsection
-
+{{-- @dd($data->toArray()) --}}
 @section('form_field')
     {{-- penyakit --}}
     <div class="form-group">
@@ -24,141 +24,216 @@
                         {{-- status penyakit --}}
                         <div class="form-group">
                             <label>Status Penyakit</label>
+                            {{-- {{ $data }} --}}
+                            @forelse ($data->list_status_penyakit as $status_penyakit)
+                                @if ($status_penyakit->penyakit_id == $penyakit->id)
+                                    <select
+                                        class="form-control @error('status_penyakit.' . $penyakit->id) is-invalid @enderror"
+                                        name="status_penyakit[{{ $penyakit->id }}]">
+                                        <option value="ya" @selected(old('status_penyakit.' . $penyakit->id, $status_penyakit->status) == 'ya')>Ya</option>
+                                        <option value="tidak" @selected(old('status_penyakit.' . $penyakit->id, $status_penyakit->status) != 'ya')>Tidak</option>
+                                    </select>
+                                @break
+
+                            @else
+                                @if ($loop->last)
+                                    <select
+                                        class="form-control @error('status_penyakit.' . $penyakit->id) is-invalid @enderror"
+                                        name="status_penyakit[{{ $penyakit->id }}]">
+                                        <option value="ya" @selected(old('status_penyakit.' . $penyakit->id) == 'ya')>Ya</option>
+                                        <option value="tidak" @selected(old('status_penyakit.' . $penyakit->id) != 'ya')>Tidak</option>
+                                    </select>
+                                @endif
+                            @endif
+                        @empty
                             <select class="form-control @error('status_penyakit.' . $penyakit->id) is-invalid @enderror"
                                 name="status_penyakit[{{ $penyakit->id }}]">
                                 <option value="ya" @selected(old('status_penyakit.' . $penyakit->id) == 'ya')>Ya</option>
                                 <option value="tidak" @selected(old('status_penyakit.' . $penyakit->id) != 'ya')>Tidak</option>
                             </select>
+                        @endforelse
 
-                            @error('status_penyakit.' . $penyakit->id)
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
-    {{-- faskes --}}
-    <div class="form-group">
-        <label class="mb-2">Fasilitas kesehatan yang didatangi setahun terakhir</label>
-        <div class="form-group mt-2">
-            <div class="btn btn-primary d-block w-100" role="button" id="show-faskes">Tampilkan Fasilitas Kesehatan</div>
-        </div>
-        <div id="accordion-2" style="display:none;">
-            @foreach ($dataFaskes as $faskes)
-                <div class="accordion">
-                    <div class="accordion-header" role="button" data-toggle="collapse"
-                        data-target="#panel-body-faskes-{{ $faskes->id }}" aria-expanded="false">
-                        <h4 class="accordion-title">{{ $faskes->nama }}</h4>
-                    </div>
-                    <div class="accordion-body collapse" id="panel-body-faskes-{{ $faskes->id }}"
-                        data-parent="#accordion-2">
-
-                        {{-- frekuensi faskes --}}
-                        <div class="form-group">
-                            <label>Frekuensi</label>
-                            <div class="input-group @error('frekuensi.' . $faskes->id) is-invalid @enderror">
-                                <input type="text"
-                                    class="form-control @error('frekuensi.' . $faskes->id) is-invalid @enderror"
-                                    name="frekuensi[{{ $faskes->id }}]" value="{{ old('frekuensi.' . $faskes->id) }}">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">kali</span>
-                                </div>
+                        @error('status_penyakit.' . $penyakit->id)
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
-                            @error('frekuensi.' . $faskes->id)
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
+                        @enderror
                     </div>
                 </div>
-            @endforeach
-        </div>
-    </div>
-
-    {{-- jamsoskes --}}
-    <div class="form-group">
-        <label>Status Jamsoskes</label>
-        <select class="form-control @error('status_jamsoskes') is-invalid @enderror" name="status_jamsoskes">
-            <option value="" selected>Pilih Status Jamsoskes</option>
-            <option value="peserta" @selected(old('status_jamsoskes') == 'peserta')>Peserta</option>
-            <option value="bukan peserta" @selected(old('status_jamsoskes') == 'bukan peserta')>Bukan Peserta</option>
-        </select>
-        @error('status_jamsostek')
-            <div class="invalid-feedback">
-                {{ $message }}
             </div>
-        @enderror
+        @endforeach
     </div>
+</div>
 
-    {{-- no jamsoskes --}}
-    <div class="form-group">
-        <label>Nomor peserta jaminan sosial kesehatan</label>
-        <input type="text" class="form-control @error('no_jamsoskes') is-invalid @enderror" name="no_jamsoskes"
-            value="{{ old('no_jamsoskes') }}">
-        @error('no_jamsoskes')
-            <div class="invalid-feedback">
-                {{ $message }}
+{{-- faskes --}}
+<div class="form-group">
+    <label class="mb-2">Fasilitas kesehatan yang didatangi setahun terakhir</label>
+    <div class="form-group mt-2">
+        <div class="btn btn-primary d-block w-100" role="button" id="show-faskes">Tampilkan Fasilitas Kesehatan</div>
+    </div>
+    <div id="accordion-2" style="display:none;">
+        @foreach ($dataFaskes as $faskes)
+            <div class="accordion">
+                <div class="accordion-header" role="button" data-toggle="collapse"
+                    data-target="#panel-body-faskes-{{ $faskes->id }}" aria-expanded="false">
+                    <h4 class="accordion-title">{{ $faskes->nama }}</h4>
+                </div>
+                <div class="accordion-body collapse" id="panel-body-faskes-{{ $faskes->id }}"
+                    data-parent="#accordion-2">
+
+                    {{-- frekuensi faskes --}}
+                    <div class="form-group">
+                        <label>Frekuensi</label>
+                        @forelse ($data->list_frekuensi_perawatan as $frekuensi_perawatan)
+                            @if ($frekuensi_perawatan->faskes_id == $faskes->id)
+                                <div class="input-group @error('frekuensi.' . $faskes->id) is-invalid @enderror">
+                                    <input type="text"
+                                        class="form-control @error('frekuensi.' . $faskes->id) is-invalid @enderror"
+                                        name="frekuensi[{{ $faskes->id }}]"
+                                        value="{{ old('frekuensi.' . $faskes->id, $frekuensi_perawatan->frekuensi) }}">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">kali</span>
+                                    </div>
+                                </div>
+                            @break
+
+                        @else
+                            @if ($loop->last)
+                                <div class="input-group @error('frekuensi.' . $faskes->id) is-invalid @enderror">
+                                    <input type="text"
+                                        class="form-control @error('frekuensi.' . $faskes->id) is-invalid @enderror"
+                                        name="frekuensi[{{ $faskes->id }}]"
+                                        value="{{ old('frekuensi.' . $faskes->id) }}">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">kali</span>
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+                    @empty
+                        <div class="input-group @error('frekuensi.' . $faskes->id) is-invalid @enderror">
+                            <input type="text"
+                                class="form-control @error('frekuensi.' . $faskes->id) is-invalid @enderror"
+                                name="frekuensi[{{ $faskes->id }}]"
+                                value="{{ old('frekuensi.' . $faskes->id) }}">
+                            <div class="input-group-append">
+                                <span class="input-group-text">kali</span>
+                            </div>
+                        </div>
+                    @endforelse
+
+                    @error('frekuensi.' . $faskes->id)
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
             </div>
-        @enderror
-    </div>
-
-    {{-- disabilitas --}}
-    <div class="form-group">
-        <label class="mb-2">Disabilitas</label>
-        <div class="form-group mt-2">
-            <div class="btn btn-primary d-block w-100" role="button" id="show-disabilitas">Tampilkan Disabilitas</div>
         </div>
-        <div id="accordion-3" style="display:none;">
-            @foreach ($dataDisabilitas as $disabilitas)
-                <div class="accordion">
-                    <div class="accordion-header" role="button" data-toggle="collapse"
-                        data-target="#panel-body-disabilitas-{{ $disabilitas->id }}" aria-expanded="false">
-                        <h4 class="accordion-title">{{ $disabilitas->nama }}</h4>
-                    </div>
-                    <div class="accordion-body collapse" id="panel-body-disabilitas-{{ $disabilitas->id }}"
-                        data-parent="#accordion-3">
+    @endforeach
+</div>
+</div>
 
-                        {{-- status disabilitas --}}
-                        <div class="form-group">
-                            <label>Status Disabilitas</label>
-                            <select class="form-control @error('status_disabilitas.' . $penyakit->id) is-invalid @enderror"
+{{-- jamsoskes --}}
+<div class="form-group">
+<label>Status Jamsoskes</label>
+<select class="form-control @error('status_jamsoskes') is-invalid @enderror" name="status_jamsoskes">
+    <option value="" selected>Pilih Status Jamsoskes</option>
+    <option value="peserta" @selected(old('status_jamsoskes', $data->status_jamsoskes) == 'peserta')>Peserta</option>
+    <option value="bukan peserta" @selected(old('status_jamsoskes', $data->status_jamsoskes) == 'bukan peserta')>Bukan Peserta</option>
+</select>
+@error('status_jamsostek')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+@enderror
+</div>
+
+{{-- no jamsoskes --}}
+<div class="form-group">
+<label>Nomor peserta jaminan sosial kesehatan</label>
+<input type="text" class="form-control @error('no_jamsoskes') is-invalid @enderror" name="no_jamsoskes"
+    value="{{ old('no_jamsoskes', $data->no_jamsoskes) }}">
+@error('no_jamsoskes')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+@enderror
+</div>
+
+{{-- disabilitas --}}
+<div class="form-group">
+<label class="mb-2">Disabilitas</label>
+<div class="form-group mt-2">
+    <div class="btn btn-primary d-block w-100" role="button" id="show-disabilitas">Tampilkan Disabilitas</div>
+</div>
+<div id="accordion-3" style="display:none;">
+    @foreach ($dataDisabilitas as $disabilitas)
+        <div class="accordion">
+            <div class="accordion-header" role="button" data-toggle="collapse"
+                data-target="#panel-body-disabilitas-{{ $disabilitas->id }}" aria-expanded="false">
+                <h4 class="accordion-title">{{ $disabilitas->nama }}</h4>
+            </div>
+            <div class="accordion-body collapse" id="panel-body-disabilitas-{{ $disabilitas->id }}"
+                data-parent="#accordion-3">
+
+                {{-- status disabilitas --}}
+                <div class="form-group">
+                    <label>Status Disabilitas</label>
+                    @forelse ($data->list_status_disabilitas as $status_disabilitas)
+                        @if ($status_disabilitas->disabilitas_id == $disabilitas->id)
+                            <select
+                                class="form-control @error('status_disabilitas.' . $disabilitas->id) is-invalid @enderror"
+                                name="status_disabilitas[{{ $disabilitas->id }}]">
+                                <option value="ya" @selected(old('status_disabilitas.' . $disabilitas->id, $status_disabilitas->status) == 'ya')>Ya</option>
+                                <option value="tidak" @selected(old('status_disabilitas.' . $disabilitas->id, $status_disabilitas->status) != 'ya')>Tidak</option>
+                            </select>
+                        @break
+
+                    @else
+                        @if ($loop->last)
+                            <select
+                                class="form-control @error('status_disabilitas.' . $disabilitas->id) is-invalid @enderror"
                                 name="status_disabilitas[{{ $disabilitas->id }}]">
                                 <option value="ya" @selected(old('status_disabilitas.' . $disabilitas->id) == 'ya')>Ya</option>
                                 <option value="tidak" @selected(old('status_disabilitas.' . $disabilitas->id) != 'ya')>Tidak</option>
                             </select>
-
-                            @error('status_disabilitas.' . $disabilitas->id)
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
+                        @endif
+                    @endif
+                @empty
+                    <select
+                        class="form-control @error('status_disabilitas.' . $disabilitas->id) is-invalid @enderror"
+                        name="status_disabilitas[{{ $disabilitas->id }}]">
+                        <option value="ya" @selected(old('status_disabilitas.' . $disabilitas->id) == 'ya')>Ya</option>
+                        <option value="tidak" @selected(old('status_disabilitas.' . $disabilitas->id) != 'ya')>Tidak</option>
+                    </select>
+                @endforelse
+                @error('status_disabilitas.' . $disabilitas->id)
+                    <div class="invalid-feedback">
+                        {{ $message }}
                     </div>
-                </div>
-            @endforeach
+                @enderror
+            </div>
         </div>
     </div>
+@endforeach
+</div>
+</div>
 @endsection
 
 @push('scripts')
-    <script>
-        $("#show-penyakit").off('click').click(function() {
-            $("#accordion-1").toggle("slow")
-        })
+<script>
+    $("#show-penyakit").off('click').click(function() {
+        $("#accordion-1").toggle("slow")
+    })
 
-        $("#show-faskes").off('click').click(function() {
-            $("#accordion-2").toggle("slow")
-        })
+    $("#show-faskes").off('click').click(function() {
+        $("#accordion-2").toggle("slow")
+    })
 
-        $("#show-disabilitas").off('click').click(function() {
-            $("#accordion-3").toggle("slow")
-            console.log("tet");
-        })
-    </script>
+    $("#show-disabilitas").off('click').click(function() {
+        $("#accordion-3").toggle("slow")
+        console.log("tet");
+    })
+</script>
 @endpush

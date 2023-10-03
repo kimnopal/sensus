@@ -91,7 +91,7 @@ class IndividuPekerjaanController extends Controller
             "type_menu" => "",
             "title" => "Individu",
             "path" => "/individu/$individu->id/pekerjaan",
-            "data" => PekerjaanIndividu::with(["list_penghasilan"])->find($individu->id),
+            "data" => PekerjaanIndividu::with(["list_penghasilan"])->where("individu_id", $individu->id)->first(),
             "dataKondisiPekerjaan" => DB::table("kondisi_pekerjaan")->get(),
             "dataPekerjaanUtama" => PekerjaanUtama::all(),
             "dataSumberPenghasilan" => SumberPenghasilan::with("satuan")->get(),
@@ -137,22 +137,23 @@ class IndividuPekerjaanController extends Controller
         $dataPekerjaanIndividu = $validatedData->except("sumber_penghasilan");
         $dataPekerjaanIndividu["individu_id"] = $individu->id;
 
-        $pekerjaanIndividuId = PekerjaanIndividu::where("individu_id", $individu->id)->update($dataPekerjaanIndividu->toArray());
+        $pekerjaanIndividu = PekerjaanIndividu::where("individu_id", $individu->id)->first();
+        $pekerjaanIndividu->update($dataPekerjaanIndividu->toArray());
         $dataPenghasilan = $dataPenghasilan->get("sumber_penghasilan");
 
         foreach ($dataPenghasilan as $id => $penghasilan) {
             if (is_null($penghasilan["jumlah"]) && is_null($penghasilan["penghasilan"]) && is_null($penghasilan["ekspor"])) {
-                Penghasilan::where("pekerjaan_individu_id", $pekerjaanIndividuId)
+                Penghasilan::where("pekerjaan_individu_id", $pekerjaanIndividu->id)
                     ->where("sumber_penghasilan_id", $id)->delete();
             } else {
-                if (Penghasilan::where("pekerjaan_individu_id", $pekerjaanIndividuId)
+                if (Penghasilan::where("pekerjaan_individu_id", $pekerjaanIndividu->id)
                     ->where("sumber_penghasilan_id", $id)->get()->isEmpty()
                 ) {
                     $penghasilan["sumber_penghasilan_id"] = $id;
-                    $penghasilan["pekerjaan_individu_id"] = $pekerjaanIndividuId;
+                    $penghasilan["pekerjaan_individu_id"] = $pekerjaanIndividu->id;
                     Penghasilan::create($penghasilan);
                 } else {
-                    Penghasilan::where("pekerjaan_individu_id", $pekerjaanIndividuId)
+                    Penghasilan::where("pekerjaan_individu_id", $pekerjaanIndividu->id)
                         ->where("sumber_penghasilan_id", $id)->update($penghasilan);
                 }
             }

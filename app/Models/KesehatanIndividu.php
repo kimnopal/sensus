@@ -19,17 +19,17 @@ class KesehatanIndividu extends Model
         return $this->belongsTo(Individu::class);
     }
 
-    public function statusPenyakit(): HasMany
+    public function list_status_penyakit(): HasMany
     {
         return $this->hasMany(StatusPenyakit::class);
     }
 
-    public function frekuensiPerawatan(): HasMany
+    public function list_frekuensi_perawatan(): HasMany
     {
         return $this->hasMany(FrekuensiPerawatan::class);
     }
 
-    public function statusDisabilitas(): HasMany
+    public function list_status_disabilitas(): HasMany
     {
         return $this->hasMany(StatusDisabilitas::class);
     }

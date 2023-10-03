@@ -118,12 +118,12 @@
                             <label>Jumlah</label>
                             <div
                                 class="input-group @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah') is-invalid @enderror">
-                                @foreach ($data->list_penghasilan as $penghasilan)
+                                @forelse ($data->list_penghasilan as $penghasilan)
                                     @if ($penghasilan->sumber_penghasilan_id == $sumberPenghasilan->id)
                                         <input type="text"
                                             class="form-control @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah') is-invalid @enderror"
                                             name="sumber_penghasilan[{{ $sumberPenghasilan->id }}][jumlah]"
-                                            value="{{ old('sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah', $penghasilan->sumber_penghasilan_id) }}">
+                                            value="{{ old('sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah', $penghasilan->jumlah) }}">
                                     @break
 
                                 @else
@@ -134,7 +134,12 @@
                                             value="{{ old('sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah') }}">
                                     @endif
                                 @endif
-                            @endforeach
+                            @empty
+                                <input type="text"
+                                    class="form-control @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah') is-invalid @enderror"
+                                    name="sumber_penghasilan[{{ $sumberPenghasilan->id }}][jumlah]"
+                                    value="{{ old('sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah') }}">
+                            @endforelse
                             <div class="input-group-append">
                                 <span class="input-group-text">{{ $sumberPenghasilan->satuan->nama }}</span>
                             </div>
@@ -150,7 +155,7 @@
                     {{-- penghasilan --}}
                     <div class="form-group">
                         <label>Penghasilan</label>
-                        @foreach ($data->list_penghasilan as $penghasilan)
+                        @forelse ($data->list_penghasilan as $penghasilan)
                             @if ($penghasilan->sumber_penghasilan_id == $sumberPenghasilan->id)
                                 <input type="text"
                                     class="form-control @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.penghasilan') is-invalid @enderror"
@@ -166,7 +171,12 @@
                                     value="{{ old('sumber_penghasilan.' . $sumberPenghasilan->id . '.penghasilan') }}">
                             @endif
                         @endif
-                    @endforeach
+                    @empty
+                        <input type="text"
+                            class="form-control @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.penghasilan') is-invalid @enderror"
+                            name="sumber_penghasilan[{{ $sumberPenghasilan->id }}][penghasilan]"
+                            value="{{ old('sumber_penghasilan.' . $sumberPenghasilan->id . '.penghasilan') }}">
+                    @endforelse
 
                     @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.penghasilan')
                         <div class="invalid-feedback">
@@ -178,7 +188,7 @@
                 {{-- ekspor --}}
                 <div class="form-group">
                     <label>Ekspor</label>
-                    @foreach ($data->list_penghasilan as $penghasilan)
+                    @forelse ($data->list_penghasilan as $penghasilan)
                         @if ($penghasilan->sumber_penghasilan_id == $sumberPenghasilan->id)
                             <select
                                 class="form-control @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.ekspor') is-invalid @enderror"
@@ -209,7 +219,20 @@
                             </select>
                         @endif
                     @endif
-                @endforeach
+                @empty
+                    <select
+                        class="form-control @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.ekspor') is-invalid @enderror"
+                        name="sumber_penghasilan[{{ $sumberPenghasilan->id }}][ekspor]">
+                        <option value="" selected>Pilih Ekspor</option>
+
+                        <option value="semua" @selected(old('sumber_penghasilan.' . $sumberPenghasilan->id . '.ekspor') == 'semua')>Semua</option>
+
+                        <option value="sebagian besar" @selected(old('sumber_penghasilan.' . $sumberPenghasilan->id . '.ekspor') == 'sebagian besar')>Sebagian Besar
+                        </option>
+
+                        <option value="tidak" @selected(old('sumber_penghasilan.' . $sumberPenghasilan->id . '.ekspor') == 'tidak')>Tidak</option>
+                    </select>
+                @endforelse
 
                 @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.ekspor')
                     <div class="invalid-feedback">
