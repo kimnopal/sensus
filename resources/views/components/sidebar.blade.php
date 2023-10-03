@@ -60,6 +60,9 @@
                     <li class="{{ Request::is('disabilitas*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/disabilitas') }}">Disabilitas</a>
                     </li>
+                    <li class="{{ Request::is('tingkat_pendidikan*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/tingkat_pendidikan') }}">Tingkat Pendidikan</a>
+                    </li>
                 </ul>
             </li>
             {{-- <li class="menu-header">RT</li> --}}

@@ -18,6 +18,7 @@ use App\Http\Controllers\RWController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\SukuController;
 use App\Http\Controllers\SumberPenghasilanController;
+use App\Http\Controllers\TingkatPendidikanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,7 @@ Route::resource("/sumber_penghasilan", SumberPenghasilanController::class)->exce
 Route::resource("/penyakit", PenyakitController::class)->except(["show"]);
 Route::resource("/faskes", FaskesController::class)->except(["show"])->parameters(["faskes" => "faskes"]);
 Route::resource("/disabilitas", DisabilitasController::class)->except(["show"])->parameters(["disabilitas" => "disabilitas"]);
+Route::resource("/tingkat_pendidikan", TingkatPendidikanController::class)->except(["show"])->parameters(["disabilitas" => "disabilitas"]);
 
 // Keluarga
 Route::resource("/keluarga", KeluargaController::class);
