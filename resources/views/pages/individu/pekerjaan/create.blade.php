@@ -128,7 +128,6 @@
                                 </div>
                             </div>
 
-                            {{-- {{ 'sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah' }} --}}
                             @error('sumber_penghasilan.' . $sumberPenghasilan->id . '.jumlah')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -195,6 +194,7 @@
 
         $("#show-sumber-penghasilan").click(function() {
             $("#accordion").toggle("slow")
+            console.log("tet");
         })
 
         // $("#tambah-sumber-penghasilan").click(function() {

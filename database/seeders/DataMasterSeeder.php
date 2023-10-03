@@ -9,12 +9,14 @@ use App\Models\Dusun;
 use App\Models\Faskes;
 use App\Models\HubunganKeluarga;
 use App\Models\PekerjaanUtama;
+use App\Models\PendidikanAktif;
 use App\Models\Penyakit;
 use App\Models\RT;
 use App\Models\RW;
 use App\Models\Satuan;
 use App\Models\Suku;
 use App\Models\SumberPenghasilan;
+use App\Models\TingkatPendidikan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -229,6 +231,43 @@ class DataMasterSeeder extends Seeder
         foreach ($listDisabilitas as $disabilitas) {
             Disabilitas::create([
                 "nama" => $disabilitas,
+            ]);
+        }
+
+        // tingkat pendidikan
+        $listTingkatPendidikan = [
+            "Tidak sekolah",
+            "SD dan sederajat",
+            "SMP dan sederajat",
+            "SMA dan sederajat",
+            "Diploma 1-3",
+            "S1 dan sederajat",
+            "S2 dan sederajat",
+            "S3 dan sederajat",
+            "Pesantren, seminari, wihara dan sejenisnya",
+        ];
+        foreach ($listTingkatPendidikan as $tingkatPendidikan) {
+            TingkatPendidikan::create([
+                "nama" => $tingkatPendidikan
+            ]);
+        }
+
+        // pendidikan aktif
+        $listPendidikanAktif = [
+            "TK/PAUD",
+            "SD dan sederajat",
+            "SMP dan sederajat",
+            "SMA dan sederajat",
+            "Diploma 1-3",
+            "S1 dan sederajat",
+            "S2 dan sederajat",
+            "S3 dan sederajat",
+            "Pesantren, seminari, wihara dan sejenisnya",
+            "Tidak sekolah",
+        ];
+        foreach ($listPendidikanAktif as $pendidikanAktif) {
+            PendidikanAktif::create([
+                "nama" => $pendidikanAktif
             ]);
         }
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign("kesehatan_individu_id")->references("id")->on("kesehatan_individu");
             $table->unsignedBigInteger("faskes_id");
             $table->foreign("faskes_id")->references("id")->on("faskes");
-            $table->integer("frekuensi");
+            $table->integer("frekuensi")->nullable();
             $table->timestamps();
         });
     }

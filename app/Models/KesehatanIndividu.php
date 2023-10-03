@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class KesehatanIndividu extends Model
@@ -12,6 +13,11 @@ class KesehatanIndividu extends Model
 
     protected $table = 'kesehatan_individu';
     protected $guarded = ['id'];
+
+    public function individu(): BelongsTo
+    {
+        return $this->belongsTo(Individu::class);
+    }
 
     public function statusPenyakit(): HasMany
     {
