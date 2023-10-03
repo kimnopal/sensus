@@ -8,8 +8,7 @@
     {{-- kondisi pekerjaan --}}
     <div class="form-group">
         <label>Kondisi Pekerjaan</label>
-        <select class="form-control @error('kondisi_pekerjaan') is-invalid @enderror" name="kondisi_pekerjaan"
-            id="selectAgama">
+        <select class="form-control @error('kondisi_pekerjaan') is-invalid @enderror" name="kondisi_pekerjaan">
             <option value="" selected>Pilih Kondisi Pekerjaan</option>
             @foreach ($dataKondisiPekerjaan as $kondisiPekerjaan)
                 <option value="{{ $kondisiPekerjaan->id }}" @selected(old('kondisi_pekerjaan') == $kondisiPekerjaan->id)>{{ $kondisiPekerjaan->nama }}

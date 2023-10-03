@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign("tingkat_pendidikan_id")->references("id")->on("tingkat_pendidikan");
             $table->unsignedBigInteger("pendidikan_aktif_id");
             $table->foreign("pendidikan_aktif_id")->references("id")->on("pendidikan_aktif");
-            $table->enum("baca_tulis", ["ya", "tidak"]);
+            $table->enum("status_baca_tulis", ["ya", "tidak"]);
             $table->string("bahasa_normal", 100);
             $table->string("bahasa_formal", 100);
             $table->integer("total_kerja_bakti");
