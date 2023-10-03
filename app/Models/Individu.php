@@ -14,27 +14,40 @@ class Individu extends Model
     protected $table = 'individu';
     protected $guarded = ['id'];
 
+    // data master
     public function agama(): BelongsTo
     {
         return $this->belongsTo(Agama::class);
     }
 
-    public function hubunganKeluargan(): BelongsTo
+    public function hubungan_keluarga(): BelongsTo
     {
         return $this->belongsTo(HubunganKeluarga::class);
     }
 
-    public function akseptorKB(): BelongsTo
+    public function akseptor_kb(): BelongsTo
     {
         return $this->belongsTo(AkseptorKB::class);
     }
 
+    public function pernikahan(): HasOne
+    {
+        return $this->hasOne(Pernikahan::class);
+    }
+
+    public function administrasi_kependudukan(): HasOne
+    {
+        return $this->hasOne(AdministrasiKependudukan::class);
+    }
+
+
+    // data utama
     public function keluarga(): BelongsTo
     {
         return $this->belongsTo(Keluarga::class, "no_kk", "no_kk");
     }
 
-    public function pekerjaanIndividu(): HasOne
+    public function pekerjaan_individu(): HasOne
     {
         return $this->hasOne(PekerjaanIndividu::class);
     }

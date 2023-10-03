@@ -2,10 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\AdministrasiKependudukan;
 use App\Models\Individu;
 use App\Models\Keluarga;
 use App\Models\PekerjaanIndividu;
 use App\Models\Penghasilan;
+use App\Models\Pernikahan;
+use App\Models\StatusPernikahan;
 use App\Models\SumberPenghasilan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -32,8 +35,24 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Keluarga::factory(5)->create();
-        Individu::factory(10)->has(PekerjaanIndividu::factory(1))->create();
+        Individu::factory(10)->has(PekerjaanIndividu::factory(1), "pekerjaan_individu")->create();
         // PekerjaanIndividu::factory(10)->create();
+        $statusPernikahan = StatusPernikahan::all();
+        Individu::all()->each(function (Individu $individu) use ($statusPernikahan) {
+            Pernikahan::create([
+                "individu_id" => $individu->id,
+                "status_pernikahan_id" => $statusPernikahan->random(1)->first()->id,
+                "status_surat_nikah" => "tidak",
+                "no_surat_nikah" => "",
+            ]);
+
+            AdministrasiKependudukan::create([
+                "individu_id" => $individu->id,
+                "status_ktp_kia" => "ya",
+                "status_akta_kelahiran" => "ya",
+                "no_akta_kelahiran" => "123"
+            ]);
+        });
 
         $pekerjaanIndividu = PekerjaanIndividu::all();
         $sumberPenghasilan = SumberPenghasilan::all();

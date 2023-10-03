@@ -37,7 +37,7 @@
                     @break
 
                     @default
-                        <a href="/individu/{{ $data->id }}/edit" class="btn btn-icon btn-primary"><i
+                        <a href="/individu/{{ $data->id }}/edit/deskripsi" class="btn btn-icon btn-primary"><i
                                 class="far fa-edit"></i></a>
                         {{-- <a href="/individu/{{ $data->id }}" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a> --}}
                         <button class="btn btn-icon btn-danger modal-button">

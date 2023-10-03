@@ -1,7 +1,7 @@
 @extends('pages.layouts.create')
 
 @section('timeline')
-    @include('pages.layouts.timeline')
+    @include('pages.layouts.timeline', ['operation' => 'create'])
 @endsection
 
 @section('form_field')

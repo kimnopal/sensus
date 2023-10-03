@@ -59,8 +59,8 @@ Route::get("/individu", [IndividuController::class, "index"]);
 
 Route::get("/individu/create/deskripsi", [IndividuController::class, "create"])->name("individu.deskripsi.create");
 Route::post("/individu/deskripsi", [IndividuController::class, "store"])->name("individu.deskripsi.store");
-// Route::get("/individu/{id}/edit/deskripsi", [IndividuDeskripsiController::class, "edit"]);
-// Route::put("/individu/{id}", [IndividuDeskripsiController::class, "edit"]);
+Route::get("/individu/{individu}/edit/deskripsi", [IndividuController::class, "edit"])->name("individu.deskripsi.edit");
+Route::put("/individu/{individu}/deskripsi", [IndividuController::class, "update"])->name("individu.deskripsi.update");
 
 Route::get("/individu/create/{individu}/pekerjaan", [IndividuPekerjaanController::class, "create"])->name("individu.pekerjaan.create");
 Route::post("/individu/{individu}/pekerjaan", [IndividuPekerjaanController::class, "store"])->name("individu.pekerjaan.store");
