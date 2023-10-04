@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('status_disabilitas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("kesehatan_individu_id");
-            $table->foreign("kesehatan_individu_id")->references("id")->on("kesehatan_individu");
+            $table->foreign("kesehatan_individu_id")->references("id")->on("kesehatan_individu")->cascadeOnDelete();
             $table->unsignedBigInteger("disabilitas_id");
             $table->foreign("disabilitas_id")->references("id")->on("disabilitas");
             $table->enum("status", ["ya", "tidak"]);

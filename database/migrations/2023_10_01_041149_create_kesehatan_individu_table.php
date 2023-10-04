@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kesehatan_individu', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("individu_id");
-            $table->foreign("individu_id")->references("id")->on("individu");
+            $table->foreign("individu_id")->references("id")->on("individu")->cascadeOnDelete();
             $table->enum("status_jamsoskes", ["peserta", "bukan peserta"]);
             $table->string("no_jamsoskes", 100)->nullable();
             $table->timestamps();

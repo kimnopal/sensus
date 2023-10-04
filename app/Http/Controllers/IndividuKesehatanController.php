@@ -167,9 +167,8 @@ class IndividuKesehatanController extends Controller
             }
         }
 
-        return redirect("/individu");
-        // return to_route("individu.pendidikan.update", [
-        //     "individu" => $individu->id,
-        // ]);
+        return to_route("individu.pendidikan.edit", [
+            "individu" => $individu->id,
+        ]);
     }
 }

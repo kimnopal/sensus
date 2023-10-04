@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
         $sumberPenghasilan = SumberPenghasilan::all();
 
         $pekerjaanIndividu->each(function (PekerjaanIndividu $pekerjaan) use ($sumberPenghasilan) {
-            $sumberPenghasilan->random(rand(1, 2))->each(function (SumberPenghasilan $penghasilan) use ($pekerjaan) {
+            $sumberPenghasilan->random(1)->each(function (SumberPenghasilan $penghasilan) use ($pekerjaan) {
                 Penghasilan::create([
                     "pekerjaan_individu_id" => $pekerjaan->id,
                     "sumber_penghasilan_id" => $penghasilan->id,

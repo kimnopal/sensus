@@ -119,6 +119,6 @@ class IndividuPendidikanController extends Controller
 
         PendidikanIndividu::where("individu_id", $individu->id)->update($validatedData->toArray());
 
-        return redirect("/individu")->with("success-create", "Berhasil memperbarui data Individu");
+        return redirect("/individu")->with("success-update", "Berhasil memperbarui data Individu");
     }
 }

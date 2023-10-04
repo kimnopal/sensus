@@ -325,4 +325,10 @@ class IndividuController extends Controller
 
         return to_route("individu.pekerjaan.edit", ["individu" => $individu->id]);
     }
+
+    public function destroy(Individu $individu)
+    {
+        $individu->destroy($individu->id);
+        return redirect("/individu")->with("success-delete", "Berhasil menghapus data Individu");
+    }
 }

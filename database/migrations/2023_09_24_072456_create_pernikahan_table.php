@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pernikahan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("individu_id");
-            $table->foreign("individu_id")->references("id")->on("individu");
+            $table->foreign("individu_id")->references("id")->on("individu")->cascadeOnDelete();
             $table->unsignedBigInteger("status_pernikahan_id");
             $table->foreign("status_pernikahan_id")->references("id")->on("status_pernikahan");
             $table->enum("status_surat_nikah", ["ya", "tidak"]);

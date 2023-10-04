@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pendidikan_individu', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("individu_id");
-            $table->foreign("individu_id")->references("id")->on("individu");
+            $table->foreign("individu_id")->references("id")->on("individu")->cascadeOnDelete();
             $table->unsignedBigInteger("tingkat_pendidikan_id");
             $table->foreign("tingkat_pendidikan_id")->references("id")->on("tingkat_pendidikan");
             $table->unsignedBigInteger("pendidikan_aktif_id");

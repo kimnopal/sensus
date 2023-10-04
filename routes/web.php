@@ -56,6 +56,7 @@ Route::resource("/keluarga", KeluargaController::class);
 
 // Individu
 Route::get("/individu", [IndividuController::class, "index"]);
+Route::delete("/individu/{individu}", [IndividuController::class, "destroy"]);
 
 Route::get("/individu/create/deskripsi", [IndividuController::class, "create"])->name("individu.deskripsi.create");
 Route::post("/individu/deskripsi", [IndividuController::class, "store"])->name("individu.deskripsi.store");

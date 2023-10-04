@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('penghasilan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("pekerjaan_individu_id");
-            $table->foreign("pekerjaan_individu_id")->references("id")->on("pekerjaan_individu");
+            $table->foreign("pekerjaan_individu_id")->references("id")->on("pekerjaan_individu")->cascadeOnDelete();
             $table->unsignedBigInteger("sumber_penghasilan_id");
             $table->foreign("sumber_penghasilan_id")->references("id")->on("sumber_penghasilan");
             $table->unsignedInteger("jumlah")->nullable();

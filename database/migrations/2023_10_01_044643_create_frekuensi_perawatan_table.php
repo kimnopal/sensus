@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('frekuensi_perawatan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("kesehatan_individu_id");
-            $table->foreign("kesehatan_individu_id")->references("id")->on("kesehatan_individu");
+            $table->foreign("kesehatan_individu_id")->references("id")->on("kesehatan_individu")->cascadeOnDelete();
             $table->unsignedBigInteger("faskes_id");
             $table->foreign("faskes_id")->references("id")->on("faskes");
             $table->integer("frekuensi")->nullable();
