@@ -18,12 +18,12 @@ class PendidikanIndividu extends Model
         return $this->belongsTo(Individu::class);
     }
 
-    public function tingkatPendidikan(): BelongsTo
+    public function tingkat_pendidikan(): BelongsTo
     {
         return $this->belongsTo(TingkatPendidikan::class);
     }
 
-    public function pendidikanAktif(): BelongsTo
+    public function pendidikan_aktif(): BelongsTo
     {
         return $this->belongsTo(PendidikanAktif::class);
     }

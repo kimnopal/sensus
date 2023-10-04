@@ -310,17 +310,18 @@ class IndividuController extends Controller
         $dataPernikahan = $validatedData->only(["status_pernikahan", "status_surat_nikah", "no_surat_nikah"]);
         $dataKependudukan = $validatedData->only(["status_ktp_kia", "status_akta_kelahiran", "no_akta_kelahiran"]);
 
-        $individuId = Individu::where("id", $individu->id)->update($dataIndividu->toArray());
+        $individu = Individu::where("id", $individu->id)->first();
+        $individu->update($dataIndividu->toArray());
 
-        $dataPernikahan["individu_id"] = $individuId;
+        $dataPernikahan["individu_id"] = $individu->id;
         $dataPernikahan["status_pernikahan_id"] = $dataPernikahan->get("status_pernikahan");
         $dataPernikahan->forget("status_pernikahan");
 
-        Pernikahan::where("individu_id", $individuId)->update($dataPernikahan->toArray());
+        Pernikahan::where("individu_id", $individu->id)->update($dataPernikahan->toArray());
 
-        $dataKependudukan["individu_id"] = $individuId;
+        $dataKependudukan["individu_id"] = $individu->id;
 
-        AdministrasiKependudukan::where("individu_id", $individuId)->update($dataKependudukan->toArray());
+        AdministrasiKependudukan::where("individu_id", $individu->id)->update($dataKependudukan->toArray());
 
         return to_route("individu.pekerjaan.edit", ["individu" => $individu->id]);
     }
