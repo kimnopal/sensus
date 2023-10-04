@@ -51,4 +51,14 @@ class Individu extends Model
     {
         return $this->hasOne(PekerjaanIndividu::class);
     }
+
+    public function kesehatan_individu(): HasOne
+    {
+        return $this->hasOne(KesehatanIndividu::class);
+    }
+
+    public function pendidikan_individu(): HasOne
+    {
+        return $this->hasOne(PendidikanIndividu::class);
+    }
 }

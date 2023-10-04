@@ -21,7 +21,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class DataMasterSeeder extends Seeder
+class DataMasterIndividuSeeder extends Seeder
 {
     /**
      * Run the database seeds.

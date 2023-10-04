@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penyakit', function (Blueprint $table) {
+        Schema::create('sumber_air_minum', function (Blueprint $table) {
             $table->id();
-            $table->string("nama", 100);
+            $table->string("sumber", 100);
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penyakit');
+        Schema::dropIfExists('sumber_air_minum');
     }
 };

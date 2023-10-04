@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use App\Models\AdministrasiKependudukan;
 use App\Models\Individu;
 use App\Models\Keluarga;
+use App\Models\KesehatanIndividu;
 use App\Models\PekerjaanIndividu;
+use App\Models\PendidikanIndividu;
 use App\Models\Penghasilan;
 use App\Models\Pernikahan;
 use App\Models\StatusPernikahan;
@@ -31,11 +33,16 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            DataMasterSeeder::class
+            DataMasterIndividuSeeder::class,
+            DataMasterKeluargaSeeder::class
         ]);
 
         Keluarga::factory(5)->create();
-        Individu::factory(10)->has(PekerjaanIndividu::factory(1), "pekerjaan_individu")->create();
+        Individu::factory(10)
+            ->has(PekerjaanIndividu::factory(1), "pekerjaan_individu")
+            ->has(KesehatanIndividu::factory(1), "kesehatan_individu")
+            ->has(PendidikanIndividu::factory(1), "pendidikan_individu")
+            ->create();
         // PekerjaanIndividu::factory(10)->create();
         $statusPernikahan = StatusPernikahan::all();
         Individu::all()->each(function (Individu $individu) use ($statusPernikahan) {

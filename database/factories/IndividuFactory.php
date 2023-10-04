@@ -47,7 +47,7 @@ class IndividuFactory extends Factory
             "facebook" => fake("id_ID")->userName(),
             "twitter" => fake("id_ID")->userName(),
             "instagram" => fake("id_ID")->userName(),
-            "step" => "pekerjaan",
+            "step" => "selesai",
         ];
     }
 }
