@@ -11,6 +11,7 @@ use App\Http\Controllers\IndividuKesehatanController;
 use App\Http\Controllers\IndividuPekerjaanController;
 use App\Http\Controllers\IndividuPendidikanController;
 use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\KeluargaPermukimanController;
 use App\Http\Controllers\PekerjaanUtamaController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\RTController;
@@ -52,7 +53,14 @@ Route::resource("/disabilitas", DisabilitasController::class)->except(["show"])-
 Route::resource("/tingkat_pendidikan", TingkatPendidikanController::class)->except(["show"])->parameters(["disabilitas" => "disabilitas"]);
 
 // Keluarga
-Route::resource("/keluarga", KeluargaController::class);
+Route::get("/keluarga", [KeluargaController::class, "index"]);
+
+Route::get("/keluarga/create/deskripsi", [KeluargaController::class, "create"])->name("keluarga.deskripsi.create");
+Route::post("/keluarga/deskripsi", [KeluargaController::class, "store"])->name("keluarga.deskripsi.store");
+
+Route::get("/keluarga/create/{keluarga}/permukiman", [KeluargaPermukimanController::class, "create"])->name("keluarga.permukiman.create");
+Route::post("/keluarga/{keluarga}/permukiman", [KeluargaPermukimanController::class, "store"])->name("keluarga.permukiman.store");
+// Route::resource("/keluarga", KeluargaController::class);
 
 // Individu
 Route::get("/individu", [IndividuController::class, "index"]);

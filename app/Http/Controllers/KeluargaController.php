@@ -20,7 +20,7 @@ class KeluargaController extends Controller
         return view("pages.keluarga.index", [
             "type_menu" => "",
             "title" => "Keluarga",
-            "path" => "/keluarga",
+            "path" => "/keluarga/create/deskripsi",
             "datas" => Keluarga::with(["dusun", "rt", "rw"])->where("no_kk", "LIKE", "%$search%")->paginate(10),
         ]);
     }
@@ -28,12 +28,12 @@ class KeluargaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view("pages.keluarga.create", [
+        return view("pages.keluarga.deskripsi.create", [
             "type_menu" => "",
             "title" => "Keluarga",
-            "path" => "/keluarga",
+            "path" => "/keluarga/deskripsi",
             "dataDusun" => Dusun::all(),
             "dataRT" => RT::all(),
             "dataRW" => RW::all(),
@@ -45,19 +45,57 @@ class KeluargaController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $rules = [
             "no_kk" => "required|unique:keluarga,no_kk",
-            "dusun_id" => "integer|nullable|exists:dusun,id",
-            "rt_id" => "integer|nullable|exists:rt,id",
-            "rw_id" => "integer|nullable|exists:rw,id",
-        ]);
+            "dusun" => "integer|nullable|exists:dusun,id",
+            "rt" => "integer|nullable|exists:rt,id",
+            "rw" => "integer|nullable|exists:rw,id",
+        ];
 
-        $validatedData["provinsi"] = "jawa barat";
-        $validatedData["kabupaten"] = "pangandaran";
-        $validatedData["kecamatan"] = "cijulang";
-        $validatedData["desa"] = "batukaras";
+        if ($request->checkbox_dusun_lainnya) {
+            $rules["dusun_lainnya"] = "required|max:100";
+            unset($rules["dusun"]);
+        }
 
-        Keluarga::create($validatedData);
+        if ($request->checkbox_rt_lainnya) {
+            $rules["rt_lainnya"] = "required";
+            unset($rules["rt"]);
+        }
+
+        if ($request->checkbox_rw_lainnya) {
+            $rules["rw_lainnya"] = "required";
+            unset($rules["rw"]);
+        }
+
+        $validatedData = collect($request->validate($rules));
+
+        if ($request->checkbox_dusun_lainnya) {
+            $dusun = Dusun::create(["nama" => $validatedData->get("dusun_lainnya")]);
+            $validatedData->put("dusun_id", $dusun->id);
+        } else {
+            $validatedData->put("dusun_id", $validatedData->get("dusun"));
+        }
+
+        if ($request->checkbox_rt_lainnya) {
+            $rt = RT::create(["nomor" => $validatedData->get("rt_lainnya")]);
+            $validatedData->put("rt_id", $rt->id);
+        } else {
+            $validatedData->put("rt_id", $validatedData->get("rt"));
+        }
+
+        if ($request->checkbox_rw_lainnya) {
+            $rw = RW::create(["nomor" => $validatedData->get("rw_lainnya")]);
+            $validatedData->put("rw_id", $rw->id);
+        } else {
+            $validatedData->put("rw_id", $validatedData->get("rw"));
+        }
+
+        $validatedData->put("provinsi", "jawa barat");
+        $validatedData->put("kabupaten", "pangandaran");
+        $validatedData->put("kecamatan", "cijulang");
+        $validatedData->put("desa", "batukaras");
+
+        Keluarga::create($validatedData->toArray());
 
         return redirect("/keluarga")->with("success-create", "Berhasil menambahkan data Keluarga");
     }
