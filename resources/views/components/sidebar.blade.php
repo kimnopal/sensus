@@ -24,12 +24,6 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Master Data</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('dusun*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/dusun') }}">Dusun</a>
-                    </li>
-                    <li class="{{ Request::is('rw*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/rw') }}">RW</a>
-                    </li>
                     <li class="{{ Request::is('agama*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/agama') }}">Agama</a>
                     </li>
@@ -65,6 +59,52 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item dropdown {{ $type_menu === 'master_keluarga' ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Master Data Keluarga</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('dusun*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/dusun') }}">Dusun</a>
+                    </li>
+                    <li class="{{ Request::is('rw*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/rw') }}">RW</a>
+                    </li>
+                    <li class="{{ Request::is('status_rumah*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/status_rumah') }}">Status Rumah</a>
+                    </li>
+                    <li class="{{ Request::is('status_lahan*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/status_lahan') }}">Status Lahan</a>
+                    </li>
+                    <li class="{{ Request::is('jenis_lantai*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/jenis_lantai') }}">Jenis Lantai</a>
+                    </li>
+                    <li class="{{ Request::is('jenis_dinding*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/jenis_dinding') }}">Jenis Dinding</a>
+                    </li>
+                    <li class="{{ Request::is('jenis_atap*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/jenis_atap') }}">Jenis Atap</a>
+                    </li>
+                    <li class="{{ Request::is('jenis_penerangan*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/jenis_penerangan') }}">Jenis Penerangan</a>
+                    </li>
+                    <li class="{{ Request::is('jenis_energi_memasak*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/jenis_energi_memasak') }}">Jenis Energi Memasak</a>
+                    </li>
+                    <li class="{{ Request::is('sumber_kayu*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/sumber_kayu') }}">Sumber Kayu</a>
+                    </li>
+                    <li class="{{ Request::is('sumber_air_mandi*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/sumber_air_mandi') }}">Sumber Air Mandi</a>
+                    </li>
+                    <li class="{{ Request::is('sumber_air_minum*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/sumber_air_minum') }}">Sumber Air Minum</a>
+                    </li>
+                    <li class="{{ Request::is('pembuangan_limbah*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/pembuangan_limbah') }}">Pembuangan Limbah</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-header">Data Utama</li>
             {{-- <li class="menu-header">RT</li> --}}
             <li class="{{ Request::is('rt*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('rt') }}"><i class="far fa-square"></i>
@@ -82,7 +122,8 @@
             </li>
             <li class="menu-header">Starter</li>
             <li class="nav-item dropdown {{ $type_menu === 'layout' ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i>
                     <span>Layout</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('layout-default-layout') ? 'active' : '' }}">

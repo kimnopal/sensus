@@ -15,7 +15,7 @@ class RWController extends Controller
         $search = $request->query("search");
 
         return view("pages.master.rw.index", [
-            "type_menu" => "master",
+            "type_menu" => "master_keluarga",
             "title" => "RW",
             "path" => "/rw",
             "datas" => RW::where("nomor", "LIKE", "%$search%")->paginate(10),
@@ -28,7 +28,7 @@ class RWController extends Controller
     public function create()
     {
         return view("pages.master.rw.create", [
-            'type_menu' => 'master',
+            'type_menu' => 'master_keluarga',
             "title" => "RW",
             "path" => "/rw",
         ]);
@@ -62,7 +62,7 @@ class RWController extends Controller
     public function edit(RW $rw)
     {
         return view("pages.master.rw.update", [
-            'type_menu' => 'master',
+            'type_menu' => 'master_keluarga',
             "title" => "RW",
             "path" => "/rw",
             'data' => $rw,

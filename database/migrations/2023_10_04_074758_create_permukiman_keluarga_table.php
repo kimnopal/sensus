@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreign("jenis_energi_memasak_id")->references("id")->on("jenis_energi_memasak");
             $table->unsignedBigInteger("sumber_kayu_id");
             $table->foreign("sumber_kayu_id")->references("id")->on("sumber_kayu");
-            $table->enum("tempat_pembuangan_sampah", ["tidak ada", "di kebun/sungai/drainase", "dibakar", "tempat sampah", "diangkut"]);
+            $table->enum("tempat_pembuangan_sampah", ["tidak ada", "di kebun/sungai/drainase", "dibakar", "tempat sampah", "tempat sampah diangkut reguler"]);
             $table->enum("fasilitas_mck", ["sendiri", "berkelompok/tetangga", "mck umum", "tidak ada"]);
             $table->unsignedBigInteger("sumber_air_mandi_id");
             $table->foreign("sumber_air_mandi_id")->references("id")->on("sumber_air_mandi");
@@ -47,6 +47,7 @@ return new class extends Migration
             $table->enum("rumah_dibantaran_sungai", ["ya", "tidak"]);
             $table->enum("rumah_dilereng", ["ya", "tidak"]);
             $table->enum("kondisi_rumah", ["kumuh", "tidak kumuh"]);
+            $table->enum("step", ["deskripsi", "permukiman", "pendidikan", "kesehatan", "enumerator"]);
             $table->timestamps();
         });
     }

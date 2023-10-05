@@ -61,6 +61,7 @@ class TingkatPendidikanController extends Controller
      */
     public function edit(TingkatPendidikan $tingkatPendidikan)
     {
+        dd($tingkatPendidikan);
         return view("pages.master.tingkat_pendidikan.update", [
             "type_menu" => "master",
             "title" => "Tingkat Pendidikan",

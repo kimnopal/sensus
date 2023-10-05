@@ -97,7 +97,7 @@ class KeluargaController extends Controller
 
         Keluarga::create($validatedData->toArray());
 
-        return redirect("/keluarga")->with("success-create", "Berhasil menambahkan data Keluarga");
+        return to_route("keluarga.permukiman.create")->with("success-create", "Berhasil menambahkan data Keluarga");
     }
 
     /**

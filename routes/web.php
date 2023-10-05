@@ -17,6 +17,8 @@ use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
 use App\Http\Controllers\SatuanController;
+use App\Http\Controllers\StatusLahanController;
+use App\Http\Controllers\StatusRumahController;
 use App\Http\Controllers\SukuController;
 use App\Http\Controllers\SumberPenghasilanController;
 use App\Http\Controllers\TingkatPendidikanController;
@@ -37,6 +39,7 @@ Route::redirect('/', '/dashboard-general-dashboard');
 
 // Master Data
 // Route::get('/dusun', [DusunController::class, "index"]);
+// individu
 Route::resource("/dusun", DusunController::class)->except(["show"]);
 Route::resource("/rt", RTController::class)->except(["show"]);
 Route::resource("/rw", RWController::class)->except(["show"]);
@@ -50,7 +53,11 @@ Route::resource("/sumber_penghasilan", SumberPenghasilanController::class)->exce
 Route::resource("/penyakit", PenyakitController::class)->except(["show"]);
 Route::resource("/faskes", FaskesController::class)->except(["show"])->parameters(["faskes" => "faskes"]);
 Route::resource("/disabilitas", DisabilitasController::class)->except(["show"])->parameters(["disabilitas" => "disabilitas"]);
-Route::resource("/tingkat_pendidikan", TingkatPendidikanController::class)->except(["show"])->parameters(["disabilitas" => "disabilitas"]);
+Route::resource("/tingkat_pendidikan", TingkatPendidikanController::class)->except(["show"]);
+
+// keluarga
+Route::resource("/status_rumah", StatusRumahController::class)->except(["show"]);
+Route::resource("/status_lahan", StatusLahanController::class)->except(["show"]);
 
 // Keluarga
 Route::get("/keluarga", [KeluargaController::class, "index"]);

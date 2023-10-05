@@ -14,7 +14,7 @@ class DusunController extends Controller
     {
         $search = $request->query("search");
         return view('pages.master.dusun.dusun', [
-            'type_menu' => 'master',
+            'type_menu' => 'master_keluarga',
             'title' => "Dusun",
             'path' => "/dusun",
             "datas" => Dusun::where("nama", "LIKE", "%$search%")->paginate(10),
@@ -27,7 +27,7 @@ class DusunController extends Controller
     public function create()
     {
         return view("pages.master.dusun.create", [
-            'type_menu' => 'master',
+            'type_menu' => 'master_keluarga',
             'title' => "Dusun",
             'path' => "/dusun",
         ]);
@@ -61,7 +61,7 @@ class DusunController extends Controller
     public function edit(Dusun $dusun)
     {
         return view("pages.master.dusun.update", [
-            'type_menu' => 'master',
+            'type_menu' => 'master_keluarga',
             'title' => "Dusun",
             'path' => "/dusun",
             'data' => $dusun,
