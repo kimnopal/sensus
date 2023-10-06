@@ -18,6 +18,7 @@ use App\Http\Controllers\JenisPeneranganController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KeluargaPermukimanController;
 use App\Http\Controllers\PekerjaanUtamaController;
+use App\Http\Controllers\PembuanganLimbahController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
@@ -74,6 +75,7 @@ Route::resource("/jenis_energi_memasak", JenisEnergiMemasakController::class)->e
 Route::resource("/sumber_kayu", SumberKayuController::class)->except(["show"]);
 Route::resource("/sumber_air_mandi", SumberAirMandiController::class)->except(["show"]);
 Route::resource("/sumber_air_minum", SumberAirMinumController::class)->except(["show"]);
+Route::resource("/pembuangan_limbah", PembuanganLimbahController::class)->except(["show"]);
 
 // Keluarga
 Route::get("/keluarga", [KeluargaController::class, "index"]);
