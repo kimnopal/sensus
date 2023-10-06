@@ -13,6 +13,7 @@ use App\Http\Controllers\IndividuPendidikanController;
 use App\Http\Controllers\JenisAtapController;
 use App\Http\Controllers\JenisDindingController;
 use App\Http\Controllers\JenisLantaiController;
+use App\Http\Controllers\JenisPeneranganController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KeluargaPermukimanController;
 use App\Http\Controllers\PekerjaanUtamaController;
@@ -64,6 +65,7 @@ Route::resource("/status_lahan", StatusLahanController::class)->except(["show"])
 Route::resource("/jenis_lantai", JenisLantaiController::class)->except(["show"]);
 Route::resource("/jenis_dinding", JenisDindingController::class)->except(["show"]);
 Route::resource("/jenis_atap", JenisAtapController::class)->except(["show"]);
+Route::resource("/jenis_penerangan", JenisPeneranganController::class)->except(["show"]);
 
 // Keluarga
 Route::get("/keluarga", [KeluargaController::class, "index"]);
