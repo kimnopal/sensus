@@ -25,6 +25,7 @@ use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\StatusLahanController;
 use App\Http\Controllers\StatusRumahController;
 use App\Http\Controllers\SukuController;
+use App\Http\Controllers\SumberKayuController;
 use App\Http\Controllers\SumberPenghasilanController;
 use App\Http\Controllers\TingkatPendidikanController;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,7 @@ Route::resource("/jenis_dinding", JenisDindingController::class)->except(["show"
 Route::resource("/jenis_atap", JenisAtapController::class)->except(["show"]);
 Route::resource("/jenis_penerangan", JenisPeneranganController::class)->except(["show"]);
 Route::resource("/jenis_energi_memasak", JenisEnergiMemasakController::class)->except(["show"]);
+Route::resource("/sumber_kayu", SumberKayuController::class)->except(["show"]);
 
 // Keluarga
 Route::get("/keluarga", [KeluargaController::class, "index"]);
