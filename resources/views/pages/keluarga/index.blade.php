@@ -16,11 +16,35 @@
             <td>{{ $data->rt->nomor ?? '-' }}</td>
             <td>{{ $data->rw->nomor ?? '-' }}</td>
             <td>
-                <a href="/keluarga/{{ $data->id }}" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a>
-                <a href="/keluarga/{{ $data->id }}/edit" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                <button class="btn btn-icon btn-danger modal-button">
-                    <i class="fas fa-times"></i>
-                </button>
+                @switch($data->step)
+                    @case('deskripsi')
+                        <a href="/keluarga/create/{{ $data->id }}/permukiman" class="btn btn-icon btn-warning"><i
+                                class="fa fa-play"></i></a>
+                    @break
+
+                    @case('permukiman')
+                        <a href="/keluarga/create/{{ $data->id }}/pendidikan" class="btn btn-icon btn-warning"><i
+                                class="fa fa-play"></i></a>
+                    @break
+
+                    @case('pendidikan')
+                        <a href="/keluarga/create/{{ $data->id }}/kesehatan" class="btn btn-icon btn-warning"><i
+                                class="fa fa-play"></i></a>
+                    @break
+
+                    @case('kesehatan')
+                        <a href="/keluarga/create/{{ $data->id }}/enumerator" class="btn btn-icon btn-warning"><i
+                                class="fa fa-play"></i></a>
+                    @break
+
+                    @default
+                        <a href="/keluarga/{{ $data->id }}/edit/deskripsi" class="btn btn-icon btn-primary"><i
+                                class="far fa-edit"></i></a>
+                        {{-- <a href="/individu/{{ $data->id }}" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a> --}}
+                        <button class="btn btn-icon btn-danger modal-button">
+                            <i class="fas fa-times"></i>
+                        </button>
+                @endswitch
 
                 <div class="modal-body d-none">
                     <form action="/keluarga/{{ $data->id }}" method="POST">

@@ -22,9 +22,10 @@ class KeluargaFactory extends Factory
             'kecamatan' => 'cijulang',
             'desa' => 'batukaras',
             'no_kk' => fake()->numerify('##########'),
+            'dusun_id' => rand(1, 5),
             'rt_id' => rand(1, 5),
             'rw_id' => rand(1, 5),
-            'dusun_id' => rand(1, 5),
+            "step" => "deskripsi",
         ];
     }
 }

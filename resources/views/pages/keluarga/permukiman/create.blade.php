@@ -555,39 +555,135 @@
 
 @push('scripts')
     <script>
-        const inputDusunLainnya = document.querySelector("#inputDusunLainnya")
-        const selectDusun = document.querySelector("#selectDusun")
-        document.querySelector("#checkboxDusunLainnya").addEventListener("click", function() {
-            if (inputDusunLainnya.hasAttribute("disabled")) {
-                inputDusunLainnya.removeAttribute("disabled")
-                selectDusun.setAttribute("disabled", true)
+        const inputStatusRumahLainnya = document.querySelector("#inputStatusRumahLainnya")
+        const selectStatusRumah = document.querySelector("#selectStatusRumah")
+        document.querySelector("#checkboxStatusRumahLainnya").addEventListener("click", function() {
+            if (inputStatusRumahLainnya.hasAttribute("disabled")) {
+                inputStatusRumahLainnya.removeAttribute("disabled")
+                selectStatusRumah.setAttribute("disabled", true)
             } else {
-                inputDusunLainnya.setAttribute("disabled", true)
-                selectDusun.removeAttribute("disabled")
+                inputStatusRumahLainnya.setAttribute("disabled", true)
+                selectStatusRumah.removeAttribute("disabled")
             }
         })
 
-        const inputRTLainnya = document.querySelector("#inputRTLainnya")
-        const selectRT = document.querySelector("#selectRT")
-        document.querySelector("#checkboxRTLainnya").addEventListener("click", function() {
-            if (inputRTLainnya.hasAttribute("disabled")) {
-                inputRTLainnya.removeAttribute("disabled")
-                selectRT.setAttribute("disabled", true)
+        const inputStatusLahanLainnya = document.querySelector("#inputStatusLahanLainnya")
+        const selectStatusLahan = document.querySelector("#selectStatusLahan")
+        document.querySelector("#checkboxStatusLahanLainnya").addEventListener("click", function() {
+            if (inputStatusLahanLainnya.hasAttribute("disabled")) {
+                inputStatusLahanLainnya.removeAttribute("disabled")
+                selectStatusLahan.setAttribute("disabled", true)
             } else {
-                inputRTLainnya.setAttribute("disabled", true)
-                selectRT.removeAttribute("disabled")
+                inputStatusLahanLainnya.setAttribute("disabled", true)
+                selectStatusLahan.removeAttribute("disabled")
             }
         })
 
-        const inputRWLainnya = document.querySelector("#inputRWLainnya")
-        const selectRW = document.querySelector("#selectRW")
-        document.querySelector("#checkboxRWLainnya").addEventListener("click", function() {
-            if (inputRWLainnya.hasAttribute("disabled")) {
-                inputRWLainnya.removeAttribute("disabled")
-                selectRW.setAttribute("disabled", true)
+        const inputJenisLantaiLainnya = document.querySelector("#inputJenisLantaiLainnya")
+        const selectJenisLantai = document.querySelector("#selectJenisLantai")
+        document.querySelector("#checkboxJenisLantaiLainnya").addEventListener("click", function() {
+            if (inputJenisLantaiLainnya.hasAttribute("disabled")) {
+                inputJenisLantaiLainnya.removeAttribute("disabled")
+                selectJenisLantai.setAttribute("disabled", true)
             } else {
-                inputRWLainnya.setAttribute("disabled", true)
-                selectRW.removeAttribute("disabled")
+                inputJenisLantaiLainnya.setAttribute("disabled", true)
+                selectJenisLantai.removeAttribute("disabled")
+            }
+        })
+
+        const inputJenisDindingLainnya = document.querySelector("#inputJenisDindingLainnya")
+        const selectJenisDinding = document.querySelector("#selectJenisDinding")
+        document.querySelector("#checkboxJenisDindingLainnya").addEventListener("click", function() {
+            if (inputJenisDindingLainnya.hasAttribute("disabled")) {
+                inputJenisDindingLainnya.removeAttribute("disabled")
+                selectJenisDinding.setAttribute("disabled", true)
+            } else {
+                inputJenisDindingLainnya.setAttribute("disabled", true)
+                selectJenisDinding.removeAttribute("disabled")
+            }
+        })
+
+        const inputJenisAtapLainnya = document.querySelector("#inputJenisAtapLainnya")
+        const selectJenisAtap = document.querySelector("#selectJenisAtap")
+        document.querySelector("#checkboxJenisAtapLainnya").addEventListener("click", function() {
+            if (inputJenisAtapLainnya.hasAttribute("disabled")) {
+                inputJenisAtapLainnya.removeAttribute("disabled")
+                selectJenisAtap.setAttribute("disabled", true)
+            } else {
+                inputJenisAtapLainnya.setAttribute("disabled", true)
+                selectJenisAtap.removeAttribute("disabled")
+            }
+        })
+
+        const inputJenisPeneranganLainnya = document.querySelector("#inputJenisPeneranganLainnya")
+        const selectJenisPenerangan = document.querySelector("#selectJenisPenerangan")
+        document.querySelector("#checkboxJenisPeneranganLainnya").addEventListener("click", function() {
+            if (inputJenisPeneranganLainnya.hasAttribute("disabled")) {
+                inputJenisPeneranganLainnya.removeAttribute("disabled")
+                selectJenisPenerangan.setAttribute("disabled", true)
+            } else {
+                inputJenisPeneranganLainnya.setAttribute("disabled", true)
+                selectJenisPenerangan.removeAttribute("disabled")
+            }
+        })
+
+        const inputJenisEnergiMemasakLainnya = document.querySelector("#inputJenisEnergiMemasakLainnya")
+        const selectJenisEnergiMemasak = document.querySelector("#selectJenisEnergiMemasak")
+        document.querySelector("#checkboxJenisEnergiMemasakLainnya").addEventListener("click", function() {
+            if (inputJenisEnergiMemasakLainnya.hasAttribute("disabled")) {
+                inputJenisEnergiMemasakLainnya.removeAttribute("disabled")
+                selectJenisEnergiMemasak.setAttribute("disabled", true)
+            } else {
+                inputJenisEnergiMemasakLainnya.setAttribute("disabled", true)
+                selectJenisEnergiMemasak.removeAttribute("disabled")
+            }
+        })
+
+        const inputSumberKayuLainnya = document.querySelector("#inputSumberKayuLainnya")
+        const selectSumberKayu = document.querySelector("#selectSumberKayu")
+        document.querySelector("#checkboxSumberKayuLainnya").addEventListener("click", function() {
+            if (inputSumberKayuLainnya.hasAttribute("disabled")) {
+                inputSumberKayuLainnya.removeAttribute("disabled")
+                selectSumberKayu.setAttribute("disabled", true)
+            } else {
+                inputSumberKayuLainnya.setAttribute("disabled", true)
+                selectSumberKayu.removeAttribute("disabled")
+            }
+        })
+
+        const inputSumberAirMandiLainnya = document.querySelector("#inputSumberAirMandiLainnya")
+        const selectSumberAirMandi = document.querySelector("#selectSumberAirMandi")
+        document.querySelector("#checkboxSumberAirMandiLainnya").addEventListener("click", function() {
+            if (inputSumberAirMandiLainnya.hasAttribute("disabled")) {
+                inputSumberAirMandiLainnya.removeAttribute("disabled")
+                selectSumberAirMandi.setAttribute("disabled", true)
+            } else {
+                inputSumberAirMandiLainnya.setAttribute("disabled", true)
+                selectSumberAirMandi.removeAttribute("disabled")
+            }
+        })
+
+        const inputSumberAirMinumLainnya = document.querySelector("#inputSumberAirMinumLainnya")
+        const selectSumberAirMinum = document.querySelector("#selectSumberAirMinum")
+        document.querySelector("#checkboxSumberAirMinumLainnya").addEventListener("click", function() {
+            if (inputSumberAirMinumLainnya.hasAttribute("disabled")) {
+                inputSumberAirMinumLainnya.removeAttribute("disabled")
+                selectSumberAirMinum.setAttribute("disabled", true)
+            } else {
+                inputSumberAirMinumLainnya.setAttribute("disabled", true)
+                selectSumberAirMinum.removeAttribute("disabled")
+            }
+        })
+
+        const inputPembuanganLimbahLainnya = document.querySelector("#inputPembuanganLimbahLainnya")
+        const selectPembuanganLimbah = document.querySelector("#selectPembuanganLimbah")
+        document.querySelector("#checkboxPembuanganLimbahLainnya").addEventListener("click", function() {
+            if (inputPembuanganLimbahLainnya.hasAttribute("disabled")) {
+                inputPembuanganLimbahLainnya.removeAttribute("disabled")
+                selectPembuanganLimbah.setAttribute("disabled", true)
+            } else {
+                inputPembuanganLimbahLainnya.setAttribute("disabled", true)
+                selectPembuanganLimbah.removeAttribute("disabled")
             }
         })
     </script>

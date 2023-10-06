@@ -47,7 +47,6 @@ return new class extends Migration
             $table->enum("rumah_dibantaran_sungai", ["ya", "tidak"]);
             $table->enum("rumah_dilereng", ["ya", "tidak"]);
             $table->enum("kondisi_rumah", ["kumuh", "tidak kumuh"]);
-            $table->enum("step", ["deskripsi", "permukiman", "pendidikan", "kesehatan", "enumerator"]);
             $table->timestamps();
         });
     }
