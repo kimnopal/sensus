@@ -10,6 +10,7 @@ use App\Http\Controllers\IndividuController;
 use App\Http\Controllers\IndividuKesehatanController;
 use App\Http\Controllers\IndividuPekerjaanController;
 use App\Http\Controllers\IndividuPendidikanController;
+use App\Http\Controllers\JenisLantaiController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KeluargaPermukimanController;
 use App\Http\Controllers\PekerjaanUtamaController;
@@ -58,6 +59,7 @@ Route::resource("/tingkat_pendidikan", TingkatPendidikanController::class)->exce
 // keluarga
 Route::resource("/status_rumah", StatusRumahController::class)->except(["show"]);
 Route::resource("/status_lahan", StatusLahanController::class)->except(["show"]);
+Route::resource("/jenis_lantai", JenisLantaiController::class)->except(["show"]);
 
 // Keluarga
 Route::get("/keluarga", [KeluargaController::class, "index"]);
