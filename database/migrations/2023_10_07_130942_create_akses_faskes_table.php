@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign("jenis_faskes_id")->references("id")->on("jenis_faskes");
             $table->unsignedInteger("jarak_tempuh")->nullable();
             $table->unsignedInteger("waktu_tempuh")->nullable();
-            $table->enum("status", ["mudah", "sulit"]);
+            $table->enum("status", ["mudah", "sulit"])->nullable();
             $table->timestamps();
         });
     }

@@ -87,7 +87,7 @@
 
                         {{-- waktu tempuh --}}
                         <div class="form-group">
-                            <label>waktu</label>
+                            <label>Waktu Tempuh</label>
                             <div
                                 class="input-group @error('akses_pendidikan.' . $jenisPendidikan->id . '.waktu_tempuh') is-invalid @enderror">
                                 <input type="text"

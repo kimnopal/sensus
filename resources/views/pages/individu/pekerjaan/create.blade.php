@@ -107,8 +107,7 @@
             @foreach ($dataSumberPenghasilan as $sumberPenghasilan)
                 <div class="accordion">
                     <div class="accordion-header" role="button" data-toggle="collapse"
-                        data-target="#panel-body-{{ $sumberPenghasilan->id }}" aria-expanded="false"
-                        data-sumber-penghasilan=1>
+                        data-target="#panel-body-{{ $sumberPenghasilan->id }}" aria-expanded="false">
                         <h4 class="accordion-title">{{ $sumberPenghasilan->nama }}</h4>
                     </div>
                     <div class="accordion-body collapse" id="panel-body-{{ $sumberPenghasilan->id }}"

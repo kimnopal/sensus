@@ -17,11 +17,11 @@ return new class extends Migration
             $table->foreign("kesehatan_keluarga_id")->references("id")->on("kesehatan_keluarga");
             $table->unsignedBigInteger("tujuan_transportasi_id");
             $table->foreign("tujuan_transportasi_id")->references("id")->on("tujuan_transportasi");
-            $table->enum("jenis_transportasi_terlama", ["darat", "air", "udara"]);
-            $table->enum("penggunaan_transportasi_umum", ["ya", "tidak"]);
-            $table->unsignedInteger("waktu_tempuh");
-            $table->unsignedInteger("biaya");
-            $table->enum("kemudahan", ["mudah", "sulit"]);
+            $table->enum("jenis_transportasi_terlama", ["darat", "air", "udara"])->nullable();
+            $table->enum("penggunaan_transportasi_umum", ["ya", "tidak"])->nullable();
+            $table->unsignedInteger("waktu_tempuh")->nullable();
+            $table->unsignedInteger("biaya")->nullable();
+            $table->enum("kemudahan", ["mudah", "sulit"])->nullable();
             $table->timestamps();
         });
     }

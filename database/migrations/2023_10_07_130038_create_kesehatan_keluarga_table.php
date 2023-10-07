@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum("bayi_gizi_baik", ["ya", "tidak"]);
             $table->enum("lansia_posyandu", ["ya", "tidak"]);
             $table->enum("keluarga_jaskesmas", ["ya", "tidak"]);
+            $table->enum("pus_kb", ["ya", "tidak"]);
             $table->enum("pus_tidak_kb", ["ya", "tidak"]);
             $table->enum("keluarga_bkb", ["ya", "tidak"]);
             $table->enum("keluarga_bkr", ["ya", "tidak"]);
