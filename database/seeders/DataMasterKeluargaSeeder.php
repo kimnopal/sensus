@@ -6,6 +6,7 @@ use App\Models\JenisAtap;
 use App\Models\JenisDinding;
 use App\Models\JenisEnergiMemasak;
 use App\Models\JenisLantai;
+use App\Models\JenisPendidikan;
 use App\Models\JenisPenerangan;
 use App\Models\PembuanganLimbah;
 use App\Models\StatusLahan;
@@ -94,6 +95,12 @@ class DataMasterKeluargaSeeder extends Seeder
         $listPembuanganLimbah = ["Tangki/instalasi pengelolaan limbah", "Sawah/kolam/sungai/drainase/laut", "Lubang di tanah"];
         foreach ($listPembuanganLimbah as $pembuanganLimbah) {
             PembuanganLimbah::create(["tempat" => $pembuanganLimbah]);
+        }
+
+        // jenis pendidikan
+        $listJenisPendidikan = ["PAUD", "TK/RA", "SD/MI atau sederajat", "SMP/MTs atau sederajat", "SMA/MA atau sederajat", "Perguruan Tinggi", "Pesantren", "Seminari", "Pendidikan keagamaan lainnya"];
+        foreach ($listJenisPendidikan as $jenisPendidikan) {
+            JenisPendidikan::create(["jenis" => $jenisPendidikan]);
         }
     }
 }

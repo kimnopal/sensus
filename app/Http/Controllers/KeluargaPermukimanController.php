@@ -249,6 +249,8 @@ class KeluargaPermukimanController extends Controller
 
         $keluarga->update(["step" => "permukiman"]);
 
-        return redirect("/keluarga");
+        return to_route("keluarga.pendidikan.create", [
+            "keluarga" => $keluarga->id,
+        ]);
     }
 }

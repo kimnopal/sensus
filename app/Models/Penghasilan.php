@@ -18,7 +18,7 @@ class Penghasilan extends Model
         return $this->belongsTo(PekerjaanIndividu::class);
     }
 
-    public function suumberPenghasilan(): BelongsTo
+    public function sumberPenghasilan(): BelongsTo
     {
         return $this->belongsTo(SumberPenghasilan::class);
     }

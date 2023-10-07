@@ -25,7 +25,7 @@ class KeluargaFactory extends Factory
             'dusun_id' => rand(1, 5),
             'rt_id' => rand(1, 5),
             'rw_id' => rand(1, 5),
-            "step" => "deskripsi",
+            "step" => "permukiman",
         ];
     }
 }

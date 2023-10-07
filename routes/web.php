@@ -16,6 +16,9 @@ use App\Http\Controllers\JenisEnergiMemasakController;
 use App\Http\Controllers\JenisLantaiController;
 use App\Http\Controllers\JenisPeneranganController;
 use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\KeluargaEnumeratorController;
+use App\Http\Controllers\KeluargaKesehatanController;
+use App\Http\Controllers\KeluargaPendidikanController;
 use App\Http\Controllers\KeluargaPermukimanController;
 use App\Http\Controllers\PekerjaanUtamaController;
 use App\Http\Controllers\PembuanganLimbahController;
@@ -85,6 +88,15 @@ Route::post("/keluarga/deskripsi", [KeluargaController::class, "store"])->name("
 
 Route::get("/keluarga/create/{keluarga}/permukiman", [KeluargaPermukimanController::class, "create"])->name("keluarga.permukiman.create");
 Route::post("/keluarga/{keluarga}/permukiman", [KeluargaPermukimanController::class, "store"])->name("keluarga.permukiman.store");
+
+Route::get("/keluarga/create/{keluarga}/pendidikan", [KeluargaPendidikanController::class, "create"])->name("keluarga.pendidikan.create");
+Route::post("/keluarga/{keluarga}/pendidikan", [KeluargaPendidikanController::class, "store"])->name("keluarga.pendidikan.store");
+
+Route::get("/keluarga/create/{keluarga}/kesehatan", [KeluargaKesehatanController::class, "create"])->name("keluarga.kesehatan.create");
+Route::post("/keluarga/{keluarga}/kesehatan", [KeluargaKesehatanController::class, "store"])->name("keluarga.kesehatan.store");
+
+Route::get("/keluarga/create/{keluarga}/enumerator", [KeluargaEnumeratorController::class, "create"])->name("keluarga.enumerator.create");
+Route::post("/keluarga/{keluarga}/enumerator", [KeluargaEnumeratorController::class, "store"])->name("keluarga.enumerator.store");
 // Route::resource("/keluarga", KeluargaController::class);
 
 // Individu

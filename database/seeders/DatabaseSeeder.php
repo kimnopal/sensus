@@ -9,6 +9,7 @@ use App\Models\KesehatanIndividu;
 use App\Models\PekerjaanIndividu;
 use App\Models\PendidikanIndividu;
 use App\Models\Penghasilan;
+use App\Models\PermukimanKeluarga;
 use App\Models\Pernikahan;
 use App\Models\StatusPernikahan;
 use App\Models\SumberPenghasilan;
@@ -37,7 +38,10 @@ class DatabaseSeeder extends Seeder
             DataMasterKeluargaSeeder::class
         ]);
 
-        Keluarga::factory(5)->create();
+        Keluarga::factory(5)
+            ->has(PermukimanKeluarga::factory(1), "permukiman_keluarga")
+            ->create();
+
         Individu::factory(10)
             ->has(PekerjaanIndividu::factory(1), "pekerjaan_individu")
             ->has(KesehatanIndividu::factory(1), "kesehatan_individu")
