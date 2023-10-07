@@ -5,9 +5,11 @@ namespace Database\Seeders;
 use App\Models\JenisAtap;
 use App\Models\JenisDinding;
 use App\Models\JenisEnergiMemasak;
+use App\Models\JenisFaskes;
 use App\Models\JenisLantai;
 use App\Models\JenisPendidikan;
 use App\Models\JenisPenerangan;
+use App\Models\JenisTenagaKesehatan;
 use App\Models\PembuanganLimbah;
 use App\Models\StatusLahan;
 use App\Models\StatusRumah;
@@ -15,6 +17,7 @@ use App\Models\SumberAirMandi;
 use App\Models\SumberAirMinum;
 use App\Models\SumberKayu;
 use App\Models\TataGuna;
+use App\Models\TujuanTransportasi;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -101,6 +104,24 @@ class DataMasterKeluargaSeeder extends Seeder
         $listJenisPendidikan = ["PAUD", "TK/RA", "SD/MI atau sederajat", "SMP/MTs atau sederajat", "SMA/MA atau sederajat", "Perguruan Tinggi", "Pesantren", "Seminari", "Pendidikan keagamaan lainnya"];
         foreach ($listJenisPendidikan as $jenisPendidikan) {
             JenisPendidikan::create(["jenis" => $jenisPendidikan]);
+        }
+
+        // jenis faskes
+        $listJenisFaskes = ["Rumah Sakit", "Rumah Sakit Bersalin", "Poliklinik", "Puskesmas", "Puskesmas Pembantu/Pustu", "Polindes", "Poskesdes", "Posyandu", "Apotik", "Toko Obat"];
+        foreach ($listJenisFaskes as $jenisFaskes) {
+            JenisFaskes::create(["jenis" => $jenisFaskes]);
+        }
+
+        // tujuan transportasi
+        $listTujuanTransportasi = ["Lokasi pekerjaan utama", "Lahan pertanian yang sedang diusahakan", "Sekolah", "Berobat", "Beribadah mingguan/bulanan/tahunan", "Rekreasi terdekat"];
+        foreach ($listTujuanTransportasi as $tujuanTransportasi) {
+            TujuanTransportasi::create(["tujuan" => $tujuanTransportasi]);
+        }
+
+        // jenis tenaga kesehatan
+        $listJenisTenagaKesehatan = ["Dokter Spesialis", "Dokter Umum", "Bidan", "Tenaga Kesehatan", "Dukun"];
+        foreach ($listJenisTenagaKesehatan as $jenisTenagaKesehatan) {
+            JenisTenagaKesehatan::create(["jenis" => $jenisTenagaKesehatan]);
         }
     }
 }
