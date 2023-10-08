@@ -281,7 +281,7 @@ class KeluargaPermukimanController extends Controller
             "type_menu" => "",
             "title" => "Keluarga",
             "path" => "/keluarga/$keluarga->id/permukiman",
-            "data" => PermukimanKeluarga::where("keluarga_id", $keluarga->id)->first(),
+            "data" => PermukimanKeluarga::with(["list_kondisi_fisik_rumah"])->where("keluarga_id", $keluarga->id)->first(),
             "dataStatusRumah" => StatusRumah::all(),
             "dataStatusLahan" => StatusLahan::all(),
             "dataJenisLantai" => JenisLantai::all(),
