@@ -35,4 +35,29 @@ class KeluargaEnumeratorController extends Controller
 
         return redirect("/keluarga")->with("success-create", "Berhasil menambahkan data Keluarga");
     }
+
+    public function edit(Keluarga $keluarga)
+    {
+        return view("pages.keluarga.enumerator.update", [
+            "type_menu" => "",
+            "title" => "Keluarga",
+            "path" => "/keluarga/$keluarga->id/enumerator",
+            "data" => EnumeratorKeluarga::where("keluarga_id", $keluarga->id)->first(),
+        ]);
+    }
+
+    public function update(Request $request, Keluarga $keluarga)
+    {
+        $validatedData = $request->validate([
+            "nama" => "required|max:200",
+            "alamat" => "required|max:200",
+            "no_hp" => "required|max:100",
+        ]);
+
+        $validatedData["keluarga_id"] = $keluarga->id;
+
+        EnumeratorKeluarga::where("keluarga_id", $keluarga->id)->update($validatedData);
+
+        return redirect("/keluarga")->with("success-update", "Berhasil memperbarui data Keluarga");
+    }
 }
