@@ -85,18 +85,28 @@ Route::get("/keluarga", [KeluargaController::class, "index"]);
 
 Route::get("/keluarga/create/deskripsi", [KeluargaController::class, "create"])->name("keluarga.deskripsi.create");
 Route::post("/keluarga/deskripsi", [KeluargaController::class, "store"])->name("keluarga.deskripsi.store");
+Route::get("/keluarga/{keluarga}/edit/deskripsi", [KeluargaController::class, "edit"])->name("keluarga.deskripsi.edit");
+Route::put("/keluarga/{keluarga}/deskripsi", [KeluargaController::class, "update"])->name("keluarga.deskripsi.update");
 
 Route::get("/keluarga/create/{keluarga}/permukiman", [KeluargaPermukimanController::class, "create"])->name("keluarga.permukiman.create");
 Route::post("/keluarga/{keluarga}/permukiman", [KeluargaPermukimanController::class, "store"])->name("keluarga.permukiman.store");
+Route::get("/keluarga/{keluarga}/edit/permukiman", [KeluargaPermukimanController::class, "edit"])->name("keluarga.permukiman.edit");
+Route::put("/keluarga/{keluarga}/permukiman", [KeluargaPermukimanController::class, "update"])->name("keluarga.permukiman.update");
 
 Route::get("/keluarga/create/{keluarga}/pendidikan", [KeluargaPendidikanController::class, "create"])->name("keluarga.pendidikan.create");
 Route::post("/keluarga/{keluarga}/pendidikan", [KeluargaPendidikanController::class, "store"])->name("keluarga.pendidikan.store");
+Route::get("/keluarga/{keluarga}/edit/pendidikan", [KeluargaPendidikanController::class, "edit"])->name("keluarga.pendidikan.edit");
+Route::put("/keluarga/{keluarga}/pendidikan", [KeluargaPendidikanController::class, "update"])->name("keluarga.pendidikan.update");
 
 Route::get("/keluarga/create/{keluarga}/kesehatan", [KeluargaKesehatanController::class, "create"])->name("keluarga.kesehatan.create");
 Route::post("/keluarga/{keluarga}/kesehatan", [KeluargaKesehatanController::class, "store"])->name("keluarga.kesehatan.store");
+Route::get("/keluarga/{keluarga}/edit/kesehatan", [KeluargaKesehatanController::class, "edit"])->name("keluarga.kesehatan.edit");
+Route::put("/keluarga/{keluarga}/kesehatan", [KeluargaKesehatanController::class, "update"])->name("keluarga.kesehatan.update");
 
 Route::get("/keluarga/create/{keluarga}/enumerator", [KeluargaEnumeratorController::class, "create"])->name("keluarga.enumerator.create");
 Route::post("/keluarga/{keluarga}/enumerator", [KeluargaEnumeratorController::class, "store"])->name("keluarga.enumerator.store");
+Route::get("/keluarga/{keluarga}/edit/enumerator", [KeluargaEnumeratorController::class, "edit"])->name("keluarga.enumerator.edit");
+Route::put("/keluarga/{keluarga}/enumerator", [KeluargaEnumeratorController::class, "update"])->name("keluarga.enumerator.update");
 // Route::resource("/keluarga", KeluargaController::class);
 
 // Individu

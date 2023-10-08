@@ -95,9 +95,11 @@ class KeluargaController extends Controller
         $validatedData->put("kecamatan", "cijulang");
         $validatedData->put("desa", "batukaras");
 
-        Keluarga::create($validatedData->toArray());
+        $keluarga = Keluarga::create($validatedData->toArray());
 
-        return to_route("keluarga.permukiman.create")->with("success-create", "Berhasil menambahkan data Keluarga");
+        return to_route("keluarga.permukiman.create", [
+            "keluarga" => $keluarga->id
+        ]);
     }
 
     /**
@@ -113,10 +115,10 @@ class KeluargaController extends Controller
      */
     public function edit(Keluarga $keluarga)
     {
-        return view("pages.keluarga.update", [
+        return view("pages.keluarga.deskripsi.update", [
             'type_menu' => '',
             "title" => "Keluarga",
-            "path" => "/keluarga",
+            "path" => "/keluarga/$keluarga->id/deskripsi",
             "data" => $keluarga,
             "dataDusun" => Dusun::all(),
             "dataRT" => RT::all(),
@@ -130,20 +132,66 @@ class KeluargaController extends Controller
     public function update(Request $request, Keluarga $keluarga)
     {
         $rules = [
-            "dusun_id" => "integer|nullable|exists:dusun,id",
-            "rt_id" => "integer|nullable|exists:rt,id",
-            "rw_id" => "integer|nullable|exists:rw,id",
+            "dusun" => "integer|nullable|exists:dusun,id",
+            "rt" => "integer|nullable|exists:rt,id",
+            "rw" => "integer|nullable|exists:rw,id",
         ];
+
+        if ($request->no_kk != $keluarga->no_kk) {
+            $rules["no_kk"] = "required|unique:keluarga,no_kk";
+        }
 
         if ($keluarga->no_kk != $request->input("no_kk")) {
             $rules["no_kk"] = "required|unique:keluarga,no_kk";
         }
 
-        $validatedData = $request->validate($rules);
+        if ($request->checkbox_dusun_lainnya) {
+            $rules["dusun_lainnya"] = "required|max:100";
+            unset($rules["dusun"]);
+        }
 
-        Keluarga::where("id", $keluarga->id)->update($validatedData);
+        if ($request->checkbox_rt_lainnya) {
+            $rules["rt_lainnya"] = "required";
+            unset($rules["rt"]);
+        }
 
-        return redirect("/keluarga")->with("success-update", "Berhasil memperbarui data Keluarga");
+        if ($request->checkbox_rw_lainnya) {
+            $rules["rw_lainnya"] = "required";
+            unset($rules["rw"]);
+        }
+
+        $validatedData = collect($request->validate($rules));
+
+        if ($request->checkbox_dusun_lainnya) {
+            $dusun = Dusun::create(["nama" => $validatedData->get("dusun_lainnya")]);
+            $validatedData->put("dusun_id", $dusun->id);
+            $validatedData->forget("dusun_lainnya");
+        } else {
+            $validatedData->put("dusun_id", $validatedData->get("dusun"));
+            $validatedData->forget("dusun");
+        }
+
+        if ($request->checkbox_rt_lainnya) {
+            $rt = RT::create(["nomor" => $validatedData->get("rt_lainnya")]);
+            $validatedData->put("rt_id", $rt->id);
+            $validatedData->forget("rt_lainnya");
+        } else {
+            $validatedData->put("rt_id", $validatedData->get("rt"));
+            $validatedData->forget("rt");
+        }
+
+        if ($request->checkbox_rw_lainnya) {
+            $rw = RW::create(["nomor" => $validatedData->get("rw_lainnya")]);
+            $validatedData->put("rw_id", $rw->id);
+            $validatedData->forget("rw_lainnya");
+        } else {
+            $validatedData->put("rw_id", $validatedData->get("rw"));
+            $validatedData->forget("rw");
+        }
+
+        Keluarga::where("id", $keluarga->id)->update($validatedData->toArray());
+
+        return to_route("keluarga.permukiman.edit", ["keluarga" => $keluarga->id]);
     }
 
     /**

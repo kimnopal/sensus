@@ -261,6 +261,47 @@
         </div>
     </div>
 
+    {{-- kondisi fisik rumah --}}
+    <div class="form-group">
+        <label class="mb-2">Kondisi Fisik Rumah</label>
+        <div class="form-group mt-2">
+            <div class="btn btn-primary d-block w-100" role="button" id="show-tataguna">Tampilkan Kondisi Fisik Rumah
+            </div>
+        </div>
+        <div id="accordion-1" style="display:none;">
+            @foreach ($dataTataGuna as $tataGuna)
+                <div class="accordion">
+                    <div class="accordion-header" role="button" data-toggle="collapse"
+                        data-target="#panel-body-tataguna-{{ $tataGuna->id }}" aria-expanded="false">
+                        <h4 class="accordion-title">{{ $tataGuna->deskripsi }}</h4>
+                    </div>
+                    <div class="accordion-body collapse" id="panel-body-tataguna-{{ $tataGuna->id }}"
+                        data-parent="#accordion-1">
+                        {{-- status --}}
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select
+                                class="form-control @error('kondisi_fisik_rumah.' . $tataGuna->id . '.status') is-invalid @enderror"
+                                name="kondisi_fisik_rumah[{{ $tataGuna->id }}][status]">
+                                <option value="" selected>Pilih Status</option>
+
+                                <option value="ya" @selected(old('kondisi_fisik_rumah.' . $tataGuna->id . '.status') == 'ya')>Ya</option>
+
+                                <option value="tidak" @selected(old('kondisi_fisik_rumah.' . $tataGuna->id . '.status') == 'tidak')>Tidak</option>
+                            </select>
+                            @error('kondisi_fisik_rumah.' . $tataGuna->id . '.status')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+
     {{-- jenis energi memasak --}}
     <div class="form-group">
         <label>Energi untuk memasak</label>
@@ -626,6 +667,11 @@
                 selectJenisPenerangan.removeAttribute("disabled")
             }
         })
+
+        $("#show-tataguna").off('click').click(function() {
+            $("#accordion-1").toggle("slow")
+        })
+
 
         const inputJenisEnergiMemasakLainnya = document.querySelector("#inputJenisEnergiMemasakLainnya")
         const selectJenisEnergiMemasak = document.querySelector("#selectJenisEnergiMemasak")

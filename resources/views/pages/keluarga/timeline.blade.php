@@ -121,20 +121,20 @@
         <div class="row">
             <div class="col">
                 <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
-                    <div
+                    <a href=""
                         class="timeline-step
 
-                {{ Route::is('keluarga.permukiman.create', 'keluarga.pendidikan.create', 'keluarga.kesehatan.create', 'keluarga.enumerator.create') ? 'active-right' : '' }}
+                {{ Route::is('keluarga.permukiman.edit', 'keluarga.pendidikan.edit', 'keluarga.kesehatan.edit', 'keluarga.enumerator.edit') ? 'active-right' : '' }}
 
                 ">
                         <div class="timeline-content
 
                 {{ Route::is(
-                    'keluarga.deskripsi.create',
-                    'keluarga.permukiman.create',
-                    'keluarga.pendidikan.create',
-                    'keluarga.kesehatan.create',
-                    'keluarga.enumerator.create',
+                    'keluarga.deskripsi.edit',
+                    'keluarga.permukiman.edit',
+                    'keluarga.pendidikan.edit',
+                    'keluarga.kesehatan.edit',
+                    'keluarga.enumerator.edit',
                 )
                     ? 'active'
                     : '' }}"
@@ -144,24 +144,24 @@
                             <p class="h6 mt-3 mb-1">Step 1</p>
                             <p class="h6 mb-1">Deskripsi Keluarga</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div
+                    <a href=""
                         class="timeline-step
 
-            {{ Route::is('keluarga.permukiman.create', 'keluarga.pendidikan.create', 'keluarga.kesehatan.create', 'keluarga.enumerator.create') ? 'active-left' : '' }}
+            {{ Route::is('keluarga.permukiman.edit', 'keluarga.pendidikan.edit', 'keluarga.kesehatan.edit', 'keluarga.enumerator.edit') ? 'active-left' : '' }}
 
-            {{ Route::is('keluarga.pendidikan.create', 'keluarga.kesehatan.create', 'keluarga.enumerator.create') ? 'active-right' : '' }}
+            {{ Route::is('keluarga.pendidikan.edit', 'keluarga.kesehatan.edit', 'keluarga.enumerator.edit') ? 'active-right' : '' }}
 
             ">
 
                         <div class="timeline-content
 
                 {{ Route::is(
-                    'keluarga.permukiman.create',
-                    'keluarga.pendidikan.create',
-                    'keluarga.kesehatan.create',
-                    'keluarga.enumerator.create',
+                    'keluarga.permukiman.edit',
+                    'keluarga.pendidikan.edit',
+                    'keluarga.kesehatan.edit',
+                    'keluarga.enumerator.edit',
                 )
                     ? 'active'
                     : '' }}"
@@ -171,36 +171,36 @@
                             <p class="h6 mt-3 mb-1">Step 2</p>
                             <p class="h6 mb-1">Permukiman Keluarga</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div
+                    <a href=""
                         class="timeline-step
 
-            {{ Route::is('keluarga.pendidikan.create', 'keluarga.kesehatan.create', 'keluarga.enumerator.create') ? 'active-left' : '' }}
+            {{ Route::is('keluarga.pendidikan.edit', 'keluarga.kesehatan.edit', 'keluarga.enumerator.edit') ? 'active-left' : '' }}
 
-            {{ Route::is('keluarga.kesehatan.create', 'keluarga.enumerator.create') ? 'active-right' : '' }}
+            {{ Route::is('keluarga.kesehatan.edit', 'keluarga.enumerator.edit') ? 'active-right' : '' }}
 
             ">
                         <div class="timeline-content
 
-                {{ Route::is('keluarga.pendidikan.create', 'keluarga.kesehatan.create', 'keluarga.enumerator.create') ? 'active' : '' }}"
+                {{ Route::is('keluarga.pendidikan.edit', 'keluarga.kesehatan.edit', 'keluarga.enumerator.edit') ? 'active' : '' }}"
                             data-toggle="popover" data-trigger="hover" data-placement="top" title=""
                             data-content="" data-original-title="">
                             <div class="inner-circle"></div>
                             <p class="h6 mt-3 mb-1">Step 3</p>
                             <p class="h6 mb-1">Pendidikan Keluarga</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div
+                    <a href=""
                         class="timeline-step
 
-            {{ Route::is('keluarga.kesehatan.create', 'keluarga.enumerator.create') ? 'active-left' : '' }}
-            {{ Route::is('keluarga.enumerator.create') ? 'active-right' : '' }}
+            {{ Route::is('keluarga.kesehatan.edit', 'keluarga.enumerator.edit') ? 'active-left' : '' }}
+            {{ Route::is('keluarga.enumerator.edit') ? 'active-right' : '' }}
             ">
                         <div class="timeline-content
 
-                {{ Route::is('keluarga.kesehatan.create', 'keluarga.enumerator.create') ? 'active' : '' }}
+                {{ Route::is('keluarga.kesehatan.edit', 'keluarga.enumerator.edit') ? 'active' : '' }}
 
                 "
                             data-toggle="popover" data-trigger="hover" data-placement="top" title=""
@@ -209,16 +209,16 @@
                             <p class="h6 mt-3 mb-1">Step 4</p>
                             <p class="h6 mb-1">Kesehatan Keluarga</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div
+                    <a href=""
                         class="timeline-step
 
-            {{ Route::is('keluarga.enumerator.create') ? 'active-left' : '' }}
+            {{ Route::is('keluarga.enumerator.edit') ? 'active-left' : '' }}
             ">
                         <div class="timeline-content
 
-                {{ Route::is('keluarga.enumerator.create') ? 'active' : '' }}
+                {{ Route::is('keluarga.enumerator.edit') ? 'active' : '' }}
 
                 "
                             data-toggle="popover" data-trigger="hover" data-placement="top" title=""
@@ -227,7 +227,7 @@
                             <p class="h6 mt-3 mb-1">Step 5</p>
                             <p class="h6 mb-1">Enumerator Keluarga</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

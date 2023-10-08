@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("nama", 100);
             $table->string("nik")->unique();
             $table->string("no_kk");
-            $table->foreign("no_kk")->references("no_kk")->on("keluarga");
+            $table->foreign("no_kk")->references("no_kk")->on("keluarga")->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum("jenis_kelamin", ["laki-laki", "perempuan"]);
             $table->string("tempat_lahir");
             $table->date("tanggal_lahir");
