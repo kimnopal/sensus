@@ -6,8 +6,10 @@ use App\Models\AdministrasiKependudukan;
 use App\Models\Individu;
 use App\Models\Keluarga;
 use App\Models\KesehatanIndividu;
+use App\Models\KesehatanKeluarga;
 use App\Models\PekerjaanIndividu;
 use App\Models\PendidikanIndividu;
+use App\Models\PendidikanKeluarga;
 use App\Models\Penghasilan;
 use App\Models\PermukimanKeluarga;
 use App\Models\Pernikahan;
@@ -40,6 +42,8 @@ class DatabaseSeeder extends Seeder
 
         Keluarga::factory(5)
             ->has(PermukimanKeluarga::factory(1), "permukiman_keluarga")
+            ->has(PendidikanKeluarga::factory(1), "pendidikan_keluarga")
+            ->has(KesehatanKeluarga::factory(1), "kesehatan_keluarga")
             ->create();
 
         Individu::factory(10)

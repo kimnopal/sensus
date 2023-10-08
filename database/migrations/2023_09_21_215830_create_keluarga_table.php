@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign("rt_id")->references("id")->on("rt");
             $table->unsignedBigInteger("rw_id")->nullable();
             $table->foreign("rw_id")->references("id")->on("rw");
-            $table->enum("step", ["deskripsi", "permukiman", "pendidikan", "kesehatan", "enumerator"]);
+            $table->enum("step", ["deskripsi", "permukiman", "pendidikan", "kesehatan", "enumerator", "selesai"]);
             $table->timestamps();
         });
     }

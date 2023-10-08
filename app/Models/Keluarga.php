@@ -38,4 +38,14 @@ class Keluarga extends Model
     {
         return $this->hasOne(PendidikanKeluarga::class);
     }
+
+    public function kesehatan_keluarga(): HasOne
+    {
+        return $this->hasOne(KesehatanKeluarga::class);
+    }
+
+    public function enumerator_keluarga(): HasOne
+    {
+        return $this->hasOne(EnumeratorKeluarga::class);
+    }
 }
