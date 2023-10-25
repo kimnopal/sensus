@@ -183,15 +183,17 @@
                         @break
 
                     @else
-                        <select
-                            class="form-control @error('akses_pendidikan.' . $jenisPendidikan->id . '.status') is-invalid @enderror"
-                            name="akses_pendidikan[{{ $jenisPendidikan->id }}][status]">
-                            <option value="" selected>Pilih Status</option>
+                        @if ($loop->last)
+                            <select
+                                class="form-control @error('akses_pendidikan.' . $jenisPendidikan->id . '.status') is-invalid @enderror"
+                                name="akses_pendidikan[{{ $jenisPendidikan->id }}][status]">
+                                <option value="" selected>Pilih Status</option>
 
-                            <option value="mudah" @selected(old('akses_pendidikan.' . $jenisPendidikan->id . '.status') == 'mudah')>Mudah</option>
+                                <option value="mudah" @selected(old('akses_pendidikan.' . $jenisPendidikan->id . '.status') == 'mudah')>Mudah</option>
 
-                            <option value="sulit" @selected(old('akses_pendidikan.' . $jenisPendidikan->id . '.status') == 'sulit')>Sulit</option>
-                        </select>
+                                <option value="sulit" @selected(old('akses_pendidikan.' . $jenisPendidikan->id . '.status') == 'sulit')>Sulit</option>
+                            </select>
+                        @endif
                     @endif
                 @empty
                     <select

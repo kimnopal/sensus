@@ -22,7 +22,7 @@
             <li class="menu-header">Master Data</li>
             <li class="nav-item dropdown {{ $type_menu === 'master' ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
-                    <span>Master Data</span></a>
+                    <span>Master Data Individu</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('agama*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/agama') }}">Agama</a>

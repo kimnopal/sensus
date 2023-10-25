@@ -232,6 +232,6 @@ class KeluargaKesehatanController extends Controller
             }
         }
 
-        return to_route("keluarga.enumerator.update", ["keluarga" => $keluarga->id]);
+        return to_route("keluarga.enumerator.edit", ["keluarga" => $keluarga->id]);
     }
 }

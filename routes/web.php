@@ -82,6 +82,7 @@ Route::resource("/pembuangan_limbah", PembuanganLimbahController::class)->except
 
 // Keluarga
 Route::get("/keluarga", [KeluargaController::class, "index"]);
+Route::delete("/keluarga/{keluarga}", [KeluargaController::class, "destroy"]);
 
 Route::get("/keluarga/create/deskripsi", [KeluargaController::class, "create"])->name("keluarga.deskripsi.create");
 Route::post("/keluarga/deskripsi", [KeluargaController::class, "store"])->name("keluarga.deskripsi.store");
